@@ -5,3 +5,7 @@ input.form-control {
 body {
     padding-top: 36px;
 }
+
+.custom-color {
+	color: white;
+}
