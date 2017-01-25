@@ -9,3 +9,21 @@ body {
 .custom-color {
 	color: white;
 }
+
+.custom-border{
+    box-shadow: 0 0 2px black;
+}
+
+.margin-if-fixed-header {
+    margin-top: 20px;
+}
+
+.margin-if-fixed-footer {
+    margin-bottom: 60px;
+}
+
+.wrapper {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
