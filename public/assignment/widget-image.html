@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Widget</title>
+    <link href="../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>
+    <link id="myCSS" href="css/style.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="images/UCL.ico" />
+</head>
+
+<body>
+
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="row container-fluid">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-brand pull-left">
+                <a href="widget-list.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left custom-color"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand navbar-link">
+                    <strong class="custom-color">Choose Widget</strong>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="navbar-brand pull-left visible-xs no-left-margin">
+                <a href="widget-list.html">
+                    <span class="glyphicon glyphicon-chevron-left custom-color"></span>
+                </a>
+            </div>
+            <div class="navbar-brand pull-right">
+                <a href="widget-list.html" class="navbar-link no-right-margin">
+                    <span class="glyphicon glyphicon-ok custom-color"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand custom-color navbar-link">
+                    <strong>Widget Edit</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid margin-if-fixed-footer margin-if-fixed-header">
+    <div class="col-sm-4 hidden-xs custom-border">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="widget-heading.html">
+                    Header
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="widget-image.html">
+                    Image
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="widget-youtube.html">
+                    Youtube
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="#">
+                    Link
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="#">
+                    Data Table
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="#">
+                    Button
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="#">
+                    HTML
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="#">
+                    Text Input
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-8">
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input type="text" class="form-control" id="text" placeholder="Text">
+            </div>
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input type="text" class="form-control" id="url" placeholder="URL">
+            </div>
+
+            <div class="form-group">
+                <label for="width">Width</label>
+                <select class="form-control" name="width" id="width">
+                    <option value="1">100%</option>
+                    <option value="2">80%</option>
+                    <option value="3">60%</option>
+                    <option value="4">40%</option>
+                    <option value="5">20%</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="upload">Upload</label>
+                <input type="file" class="form-control" id="upload" value="Delete">
+            </div>
+            <div class="form-group">
+                <input type="button" class="form-control btn-primary" id="upload_image" value="Upload Image">
+            </div>
+            <div class="form-group">
+                <input type="button" class="form-control btn-danger" id="delete" value="Delete">
+            </div>
+        </form>
+    </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom bg-primary">
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-footer">
+                <a href="profile.html" class="navbar-brand navbar-link pull-right">
+                    <span class="glyphicon glyphicon-user custom-color"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+</body>
+
+</html>
