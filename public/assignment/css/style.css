@@ -50,6 +50,9 @@ body {
     height: 700px;
 }
 
+a:hover{
+    text-decoration: none;
+}
 
 .margin-if-fixed-header {
     margin-top: 20px;
