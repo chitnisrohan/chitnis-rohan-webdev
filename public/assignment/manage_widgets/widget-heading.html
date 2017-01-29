@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Widget</title>
-    <link href="../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>
-    <link id="myCSS" href="css/style.css" rel="stylesheet"/>
-    <link rel="shortcut icon" href="images/UCL.ico" />
+    <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>
+    <link id="myCSS" href="../css/style.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="../images/UCL.ico" />
 </head>
 
 <body>
@@ -102,22 +102,20 @@
                 <input type="text" class="form-control" id="text" placeholder="Text">
             </div>
             <div class="form-group">
-                <label for="url">URL</label>
-                <input type="text" class="form-control" id="url" placeholder="URL">
-            </div>
-            <div class="form-group">
-                <label for="width">Width</label>
-                <select class="form-control" name="width" id="width">
-                    <option value="1">100%</option>
-                    <option value="2">80%</option>
-                    <option value="3">60%</option>
-                    <option value="4">40%</option>
-                    <option value="5">20%</option>
+                <label for="size">Size</label>
+                <select class="form-control" name="size" id="size">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                 </select>
             </div>
             <div class="form-group">
                 <input type="button" class="form-control btn-danger" id="delete" value="Delete">
             </div>
+
         </form>
     </div>
 </div>
@@ -126,7 +124,7 @@
     <div class="row container-fluid">
         <div class="col-sm-12">
             <div class="navbar-footer">
-                <a href="profile.html" class="navbar-brand navbar-link pull-right">
+                <a href="../manage_user/profile.html" class="navbar-brand navbar-link pull-right">
                     <span class="glyphicon glyphicon-user custom-color"></span>
                 </a>
             </div>

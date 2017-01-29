@@ -2,6 +2,10 @@ input.form-control {
     margin-bottom: 5px;
 }
 
+
+.align-center{
+    text-align: center;
+}
 body {
     padding-top: 36px;
 }
@@ -41,13 +45,6 @@ body {
     right: 0;
 }
 
-#style-font{
-    font-family: "Palatino Linotype";
-}
-
-.align-center{
-    text-align: center;
-}
 .custom-color {
 	color: white;
 }
