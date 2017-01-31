@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Profile</title>
+    <link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>-->
     <link href="../css/style.css" rel="stylesheet"/>
     <link rel="shortcut icon" href="../images/UCL.ico" />
 </head>
@@ -12,45 +13,51 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="row">
-        <div class="navbar-header col-xs-12">
-            <a class="navbar-brand navbar-link pull-left" href="#">
-                <strong class="custom-color">Profile</strong>
-            </a>
-            <a href="#" class="navbar-brand navbar-link pull-right">
-                <span class="glyphicon glyphicon-ok custom-color"></span>
-            </a>
-        </div>
+            <div class="col-xs-12">
+                <div>
+                    <a class="navbar-brand navbar-link pull-left navbar-header" href="#">
+                        <strong class="custom-color">Profile</strong>
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="navbar-brand navbar-link pull-right">
+                        <span class="glyphicon glyphicon-ok custom-color"></span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
 
 <div class="container-fluid margin-if-fixed-footer margin-if-fixed-header added-margin">
     <div class="row">
-    <div class = "col-xs-12">
-    <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" placeholder="Username">
-        </div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
-        </div>
-        <div class="form-group">
-            <label for="first-name">First Name</label>
-            <input type="text" class="form-control" id="first-name" placeholder="Alice">
-        </div>
-        <div class="form-group">
-            <label for="last-name">Last Name</label>
-            <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
-        </div>
-    </form>
+        <div class="col-lg-1 visible-lg"></div>
+            <div class = "col-lg-10 col-xs-12">
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="alice@wonderland.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" class="form-control" id="first-name" placeholder="Alice">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" class="form-control" id="last-name" placeholder="Wonderland">
+                    </div>
+                </form>
 
-    <a class="btn btn-primary btn-block"
-       href="../manage_websites/website-list.html">Websites</a>
-    <a class="btn btn-danger  btn-block"
-       href="login.html">Logout</a>
-    </div>
+                <a class="btn btn-primary btn-block"
+                   href="../manage_websites/website-list.html">Websites</a>
+                <a class="btn btn-danger  btn-block"
+                   href="login.html">Logout</a>
+            </div>
+        <div class="col-lg-1 visible-lg"></div>
     </div>
 </div>
 

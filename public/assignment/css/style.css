@@ -45,6 +45,15 @@ body {
     font-family: "Palatino Linotype";
 }
 
+body{
+    overflow-x: hidden;
+}
+
+.donotoverflow{
+
+    overflow-x: hidden;
+}
+
 .align-center{
     text-align: center;
 }
