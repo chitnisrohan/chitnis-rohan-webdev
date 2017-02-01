@@ -6,68 +6,20 @@ body {
     padding-top: 36px;
 }
 
-.added-margin{
+.wbdv-added-margin{
     margin-left: 0.5%;
     margin-right: 0.5%;
 }
-
-.box{
-    width: 30px;
-    height: 20px;
-    background-color: white;
-    border: solid 1px silver;
-}
-
-.overlayimage{
-    position: relative;
-}
-
-
-.adjust-glyphicon1-position{
-    position: absolute;
-    top: 1.5%;
-    right: 0.5%;
-}
-
-.adjust-glyphicon2-position{
-    position: absolute;
-    top: 1.5%;
-    right: 4%;
-}
-
-.adjust-position{
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
 
 body{
     overflow-x : hidden;
 }
 
-.wbdv-margin-right{
-    margin-right: 10px;
-}
-
-.wbdv-margin-bottom{
-    margin-bottom: 30px;
-}
-
-
-.donotoverflow{
-
-    overflow-x: hidden;
-}
-
-.align-center{
-    text-align: center;
-}
-.custom-color {
+.wbdv-custom-color {
 	color: white;
 }
 
-.custom-border{
+.wbdv-custom-border{
     border-right: 1px solid #ccc;
     height: 700px;
 }
@@ -76,41 +28,27 @@ a:hover{
     text-decoration: none;
 }
 
-.margin-if-fixed-header {
+.wbdv-margin-if-fixed-header {
     margin-top: 20px;
 }
 
-.margin-if-fixed-footer {
+.wbdv-margin-if-fixed-footer {
     margin-bottom: 60px;
 }
 
-
-.wrapper {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-}
-
-.no-left-margin {
+.wbdv-no-left-margin {
     margin-left: 0px;
 
 }
-.no-right-margin {
+.wbdv-no-right-margin {
     margin-right: 0px;
 }
 
-.custom-margin-top {
-    margin-top: 10px;
-}
-.custom-margin-bottom {
-    margin-bottom: 10px;
-}
-
-.custom-margin-for-widget {
+.wbdv-custom-margin-for-widget {
     margin-top: 20px;
 }
 
-.jga-toolbar {
+.wbdv-jga-toolbar {
     position: absolute;
     right: 15px;
     background-color: white;
