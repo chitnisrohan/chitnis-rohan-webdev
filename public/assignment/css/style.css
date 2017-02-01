@@ -41,13 +41,19 @@ body {
     right: 0;
 }
 
-#style-font{
-    font-family: "Palatino Linotype";
-}
 
 body{
-    overflow-x: hidden;
+    overflow-x : hidden;
 }
+
+.wbdv-margin-right{
+    margin-right: 10px;
+}
+
+.wbdv-margin-bottom{
+    margin-bottom: 30px;
+}
+
 
 .donotoverflow{
 
