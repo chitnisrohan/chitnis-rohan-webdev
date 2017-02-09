@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no width=device-width">
+    <title>New Page</title>
+    <!--<link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>-->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link id="myCSS" href="../css/style.css" rel="stylesheet"/>
+    <link rel="shortcut icon" href="../images/UCL.ico" />
+</head>
+
+<body>
+
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="row container-fluid">
+        <div class="col-sm-4 hidden-xs">
+            <div class="navbar-brand pull-left">
+                <a href="page-list.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-chevron-left wbdv-custom-color"></span>
+                </a>
+            </div>
+            <div class="navbar-brand pull-right">
+                <a href="page-new.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-plus wbdv-custom-color"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a href="page-list.html" class="navbar-brand navbar-link">
+                    <strong class="wbdv-custom-color">Pages</strong>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-sm-8">
+            <div class="navbar-brand pull-left hidden-sm hidden-md hidden-lg">
+                <a href="page-list.html" class="navbar-link wbdv-no-left-margin">
+                    <span class="glyphicon glyphicon-chevron-left wbdv-custom-color"></span>
+                </a>
+            </div>
+            <div class="navbar-brand pull-right">
+                <a href="page-list.html" class="navbar-link wbdv-no-right-margin">
+                    <span class="glyphicon glyphicon-ok wbdv-custom-color"></span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand navbar-link">
+                    <strong class="wbdv-custom-color">New Page</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="row container-fluid wbdv-margin-if-fixed-footer wbdv-margin-if-fixed-header">
+    <div class="col-sm-4 hidden-xs wbdv-custom-border">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="../widgets/widget-list.html">
+                    Address Book Page
+                </a>
+                <a href="page-edit.html" class="pull-right">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="../widgets/widget-list.html">
+                    Blogger Page
+                </a>
+                <a href="page-edit.html" class="pull-right">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a href="../widgets/widget-list.html">
+                    Blogging Page
+                </a>
+                <a href="page-edit.html" class="pull-right">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-sm-8">
+        <form>
+            <div class="form-group">
+                <label for="pagename">Name</label>
+                <input type="text" class="form-control" id="pagename" placeholder="Page Name">
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" placeholder="Page Title">
+            </div>
+        </form>
+    </div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom bg-primary">
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-footer">
+                <a href="../views/user/profile.html" class="navbar-brand navbar-link pull-right">
+                    <span class="glyphicon glyphicon-user wbdv-custom-color"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+</body>
+
+</html>

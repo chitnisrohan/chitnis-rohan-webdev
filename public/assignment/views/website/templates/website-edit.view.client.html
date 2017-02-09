@@ -1,18 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="user-scalable=no width=device-width">
-    <title>New Websites</title>
-    <!--<link href="../../bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet"/>-->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link id="myCSS" href="../css/style.css" rel="stylesheet"/>
-    <link rel="shortcut icon" href="../images/UCL.ico" />
-</head>
-
-<body>
-
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs">
@@ -33,20 +18,20 @@
             </div>
         </div>
 
-        <div class="col-sm-8 col-xs-12">
+        <div class="col-sm-8">
             <div class="navbar-brand pull-left hidden-sm hidden-md hidden-lg">
                 <a href="website-list.html" class="navbar-link wbdv-no-left-margin">
                     <span class="glyphicon glyphicon-chevron-left wbdv-custom-color"></span>
                 </a>
             </div>
             <div class="navbar-brand pull-right">
-                <a href=website-list.html class="navbar-link wbdv-no-right-margin">
+                <a href="website-list.html" class="navbar-link wbdv-no-right-margin">
                     <span class="glyphicon glyphicon-ok wbdv-custom-color"></span>
                 </a>
             </div>
             <div class="navbar-header">
                 <a href="#" class="navbar-brand navbar-link">
-                    <strong class="wbdv-custom-color">New Website</strong>
+                    <strong class="wbdv-custom-color">Edit Website</strong>
                 </a>
             </div>
         </div>
@@ -55,63 +40,60 @@
 
 <div class="row container-fluid wbdv-margin-if-fixed-footer wbdv-margin-if-fixed-header">
     <div class="col-sm-4 hidden-xs wbdv-custom-border">
-        <ul class="list-group">
+        <ul ng-repeat="website in model.websiteList" class="list-group">
             <li class="list-group-item">
-                <a href="../manage_pages/page-list.html">
-                    Address Book App
+                <a href="../pages/page-list.html">
+                    {{website.name}}
                 </a>
                 <a href="website-edit.html" class="pull-right">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
-            <li class="list-group-item">
-                <a href="../manage_pages/page-list.html">
-                    Blogger
-                </a>
-                <a href="website-edit.html" class="pull-right">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="../manage_pages/page-list.html">
-                    Blogging App
-                </a>
-                <a href="website-edit.html" class="pull-right">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
+            <!--<li class="list-group-item">-->
+                <!--<a href="../pages/page-list.html">-->
+                    <!--Blogger-->
+                <!--</a>-->
+                <!--<a href="website-edit.html" class="pull-right">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="list-group-item">-->
+                <!--<a href="../pages/page-list.html">-->
+                    <!--Blogging App-->
+                <!--</a>-->
+                <!--<a href="website-edit.html" class="pull-right">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+            <!--</li>-->
         </ul>
     </div>
 
-    <div class="col-xs-12 col-sm-8">
+    <div class="col-sm-8">
         <form>
             <div class="form-group">
-                <label for="username">Name</label>
-                <input type="text" class="form-control" id="username" placeholder="Website Name">
+                <label for="username">Website Name</label>
+                <input type="text" class="form-control" id="username" value="{{model.website.name}}">
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class = "form-control" name="Description" id="description" cols="40" rows="5"
-                          placeholder="Website Description"></textarea>
+                <label for="description">Website Description</label>
+                <textarea class = "form-control" name="Description"
+                          id="description" cols="40" rows="5">{{model.website.description}}</textarea>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-danger form-control" href="website-list.html">Delete</a>
             </div>
         </form>
     </div>
 </div>
 
-
 <nav class="navbar navbar-fixed-bottom bg-primary">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <a href="../manage_user/profile.html" class="navbar-brand navbar-link pull-right">
+    <div class="row container-fluid">
+        <div class="col-sm-12">
+            <div class="navbar-footer">
+                <a href="../views/user/profile.html" class="navbar-brand navbar-link pull-right">
                     <span class="glyphicon glyphicon-user wbdv-custom-color"></span>
                 </a>
             </div>
         </div>
     </div>
 </nav>
-
-
-</body>
-
-</html>
