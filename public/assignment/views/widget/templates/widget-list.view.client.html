@@ -1,0 +1,114 @@
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar-header col-xs-12">
+                <a ng-click="model.goToPageList()" class="navbar-brand navbar-link pull-left">
+                    <span class="glyphicon glyphicon-chevron-left wbdv-custom-color"></span>
+                </a>
+                <a class="navbar-brand navbar-link pull-left">
+                    <strong class="wbdv-custom-color">Widgets</strong>
+                </a>
+                <a ng-click="model.goToWidgetChooser()" class="navbar-brand navbar-link pull-right">
+                    <span class="glyphicon glyphicon-plus wbdv-custom-color"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid row wbdv-margin-if-fixed-footer wbdv-margin-if-fixed-header">
+
+    <div class="col-lg-1 visible-lg"></div>
+
+    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-10">
+        <div ng-repeat="widget in model.widgetTypeList track by $index">
+            <div ng-switch on="widget">
+                <div ng-controller="WidgetListController">
+                    <div ng-switch-when="HEADER">
+                        <div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
+                    </div>
+                </div>
+                <div ng-switch-when="IMAGE">
+                    <div ng-include ="'views/widget/templates/widget-image.view.client.html'"></div>
+                </div>
+                <div ng-switch-when="YOUTUBE">
+                    <div ng-include ="'views/widget/templates/widget-youtube.view.client.html'"></div>
+                </div>
+            </div>
+        </div>
+        <!--<div>-->
+            <!--<div class="wbdv-jga-toolbar">-->
+                <!--<a href="widget-heading.html">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+                <!--<a>-->
+                    <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<h1 class="page-header">Welcome To Fifa 16</h1>-->
+        <!--</div>-->
+
+        <!--<div class="wbdv-custom-margin-for-widget">-->
+            <!--<div class="wbdv-jga-toolbar">-->
+                <!--<a href="widget-image.html">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+                <!--<a href="#">-->
+                    <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<img width="100%" src="../images/fifa16.jpg">-->
+        <!--</div>-->
+
+        <!--<div class="wbdv-custom-margin-for-widget">-->
+            <!--<div class="wbdv-jga-toolbar">-->
+                <!--<a href="widget-heading.html">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+                <!--<a href="#">-->
+                    <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<h4 class="modal-header">Have a look at the promo video</h4>-->
+        <!--</div>-->
+
+
+        <!--<div class="wbdv-custom-margin-for-widget">-->
+            <!--<div class="wbdv-jga-toolbar">-->
+                <!--<a href="widget-youtube.html">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+                <!--<a href="#">-->
+                    <!--<span class="glyphicon glyphicon-align-justify"></span>-->
+                <!--</a>-->
+
+            <!--</div>-->
+
+            <!--<iframe src="https://www.youtube.com/embed/AfeDwkIaHNY" width="100%" height = "300" frameborder="0" allowfullscreen>-->
+            <!--</iframe>-->
+        <!--</div>-->
+    </div>
+
+    <div class="col-lg-1 visible-lg"></div>
+
+</div>
+
+
+<nav class="navbar navbar-fixed-bottom bg-primary">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="navbar-footer col-xs-12">
+                <a href="#" class="navbar-brand navbar-link pull-left">
+                    <span class="glyphicon glyphicon-play wbdv-custom-color"></span>
+                </a>
+                <a href="#" class="navbar-brand navbar-link">
+                    <span class="glyphicon glyphicon-eye-open wbdv-custom-color"></span>
+                </a>
+                <a href="../views/user/profile.html" class="navbar-brand navbar-link pull-right">
+                    <span class="glyphicon glyphicon-user wbdv-custom-color"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>

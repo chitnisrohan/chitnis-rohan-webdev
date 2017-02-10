@@ -19,7 +19,7 @@
 <div class="container-fluid wbdv-margin-if-fixed-header wbdv-margin-if-fixed-footer">
     <ul ng-repeat="page in model.pageList" class="list-group">
         <li class="list-group-item">
-            <a href="../widgets/widget-list.html">
+            <a ng-click="model.goToWidgetList(page._id)">
                 {{page.name}}
             </a>
             <a ng-click="model.goToPageEdit(page._id)" class="pull-right">

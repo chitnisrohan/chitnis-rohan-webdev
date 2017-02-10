@@ -42,7 +42,7 @@
     <div class="col-sm-4 hidden-xs wbdv-custom-border">
         <ul ng-repeat="page in model.pageList" class="list-group">
             <li class="list-group-item">
-                <a href="../widgets/widget-list.html">
+                <a ng-click="model.goToWidgetList(page._id)">
                     {{page.name}}
                 </a>
                 <a ng-click="model.goToEditPage(page._id)" class="pull-right">

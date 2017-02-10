@@ -15,12 +15,17 @@
         vm.editPage = editPage;
         vm.goToEditPage = goToEditPage;
         vm.deletePage = deletePage;
+        vm.goToWidgetList = goToWidgetList;
 
         function init() {
             vm.pageList = PageService.findPageByWebsiteId(websiteId);
             vm.page = PageService.findPageById(pageId);
         }
         init();
+
+        function goToWidgetList(pageid) {
+            $location.url("/user/"+ userId +"/website/"+ websiteId + "/page/"+ pageid + "/widget");
+        }
 
         function deletePage() {
             var deletedPage = PageService.deletePage(pageId);

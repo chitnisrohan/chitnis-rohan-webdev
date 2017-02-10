@@ -12,11 +12,16 @@
         vm.createPage = createPage;
         vm.goToEditPage = goToEditPage;
         vm.goToProfile = goToProfile;
+        vm.goToWidgetList = goToWidgetList;
 
         function init() {
             vm.pageList = PageService.findPageByWebsiteId(websiteId);
         }
         init();
+
+        function goToWidgetList(pageid) {
+            $location.url("/user/"+ userId +"/website/"+ websiteId + "/page/"+ pageid + "/widget");
+        }
 
         function goToProfile() {
             $location.url("/user/"+ userId);
