@@ -14,7 +14,7 @@
             if(user == null) {
                 vm.error = "unable to register user";
             } else {
-                $location.url("/profile/"+user._id);
+                $location.url("/user/"+user._id);
             }
         }
     }

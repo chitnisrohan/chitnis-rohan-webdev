@@ -8,16 +8,21 @@
         var userId = $routeParams['uid'];
         vm.deleteUser = deleteUser;
         vm.websiteList = websiteList;
+        vm.update = update;
 
+        function init() {
+            vm.user = UserService.findUserById(userId);
+        }
+        init();
 
-        vm.update = function (newUser) {
+        function update(newUser) {
             var user = UserService.updateUser(userId, newUser);
             if(user == null) {
                 vm.error = "unable to update user";
             } else {
                 vm.message = "user successfully updated"
             }
-        };
+        }
 
         function websiteList(userId) {
             $location.url("/user/" +userId+ "/website/");
@@ -31,10 +36,6 @@
                 $location.url("/login/");
             }
         }
-        var user = UserService.findUserById(userId);
-        vm.user = user;
-
-        console.log(user);
     }
 
 })();

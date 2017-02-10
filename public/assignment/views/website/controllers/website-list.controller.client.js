@@ -8,27 +8,30 @@
         var userId = $routeParams['uid'];
 
         vm.goToWebsite = goToWebsite;
-        vm.editWebsite = editWebsite;
-        vm.createWebsite = createWebsite;
+        vm.goToEditWebsite = goToEditWebsite;
+        vm.goToNewWebsite = goToNewWebsite;
+        vm.goToProfile = goToProfile;
 
-        function createWebsite() {
+        function init() {
+            vm.websiteList = WebsiteService.findWebsitesByUser(userId);
+        }
+        init();
+
+        function goToProfile() {
+            $location.url("/user/"+ userId);
+        }
+
+        function goToNewWebsite() {
             $location.url("/user/"+ userId +"/website/new");
         }
 
-        var website_list = WebsiteService.findWebsitesByUser(userId);
-
-
-        function editWebsite(websiteId) {
+        function goToEditWebsite(websiteId) {
             $location.url("/user/"+ userId +"/website/" + websiteId);
         }
 
         function goToWebsite(websiteId) {
-            var website = WebsiteService.findWebsiteById(websiteId);
-            console.log(website.name);
-            vm.website = website;
+            $location.url("/user/"+ userId +"/website/" + websiteId + "/page");
         }
-
-        vm.websiteList = website_list;
     }
 })();
 

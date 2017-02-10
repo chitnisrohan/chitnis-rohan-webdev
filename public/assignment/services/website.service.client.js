@@ -23,11 +23,26 @@
         return api;
 
         function updateWebsite(websiteId, website) {
-
+            for(var w in websites){
+                var wsite = websites[w];
+                if(wsite._id === websiteId){
+                    wsite.name = website.name;
+                    wsite.description = wsite.description;
+                    return angular.copy(wsite);
+                }
+            }
+            return null;
         }
 
         function deleteWebsite(websiteId) {
-
+            for(var w in websites){
+                var wsite = websites[w];
+                if(wsite._id === websiteId){
+                    websites.splice(w,1);
+                    return angular.copy(wsite);
+                }
+            }
+            return null;
         }
 
         function findWebsiteById(websiteId) {
@@ -41,10 +56,10 @@
         }
 
         function createWebsite(userId, website) {
-            var website = {_id: (new Date()).getTime().toString(), name: website.name,    developerId: userId,
+            var newWebsite = {_id: (new Date()).getTime().toString(), name: website.name,    developerId: userId,
                 description: website.description};
-            websites.push(website);
-            return website;
+            websites.push(newWebsite);
+            return newWebsite;
         }
 
         function findWebsitesByUser(userId) {
