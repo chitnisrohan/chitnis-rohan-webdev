@@ -1,11 +1,22 @@
 <div>
-    <div class="wbdv-jga-toolbar">
-        <a href="widget-heading.html">
-           <span class="glyphicon glyphicon-cog"></span>
-        </a>
-        <a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </a>
+    <div ng-switch on="{{widget.size}}">
+        <div ng-switch-when = "1">
+            <h1 class="page-header">{{widget.text}}</h1>
+        </div>
+        <div ng-switch-when = "2">
+            <h2 class="page-header">{{widget.text}}</h2>
+        </div>
+        <div ng-switch-when = "3">
+            <h3 class="page-header">{{widget.text}}</h3>
+        </div>
+        <div ng-switch-when = "4">
+            <h4 class="page-header">{{widget.text}}</h4>
+        </div>
+        <div ng-switch-when = "5">
+            <h5 class="page-header">{{widget.text}}</h5>
+        </div>
+        <div ng-switch-when = "6">
+            <h6 class="page-header">{{widget.text}}</h6>
+        </div>
     </div>
-    <h1 class="page-header">{{model.widgetTextList}}</h1>
 </div>

@@ -1,0 +1,53 @@
+<div class="row container-fluid wbdv-margin-if-fixed-footer wbdv-margin-if-fixed-header">
+
+
+    <div class="col-xs-12">
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="text">Text</label>
+                <input type="text" class="form-control" id="text" placeholder="Text">
+            </div>
+            <div class="form-group">
+                <label for="url">URL</label>
+                <input ng-model="model.widget.url" type="text" class="form-control" id="url" value="https://www.youtube.com/AfeDwkIaHNY">
+            </div>
+            <div class="form-group">
+                <label for="width">Width</label>
+                <select ng-model="model.widget.width"
+                        class="form-control" name="width" id="width">
+                    <option value="100%">100%</option>
+                    <option value="80%">80%</option>
+                    <option value="60%">60%</option>
+                    <option value="40%">40%</option>
+                    <option value="20%">20%</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <a ng-show="model.mode !='new'"
+                   class="btn btn-primary form-control"
+                   ng-click="model.editWidget(model.widget)">
+                    Update
+                </a>
+            </div>
+            <div class="form-group">
+                <a ng-show="model.mode !='new'"
+                   class="btn btn-danger form-control"
+                   ng-click="model.deleteWidget(model.widget)">
+                    Delete
+                </a>
+            </div>
+            <div class="form-group">
+                <a ng-show="model.mode ==='new'"
+                   class="btn btn-primary form-control"
+                   ng-click="model.addWidget(model.widget)">
+                    Add Youtube Widget
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+

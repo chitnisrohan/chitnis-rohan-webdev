@@ -60,18 +60,15 @@
                 controller: "WidgetChooserController",
                 controllerAs:"model"
             })
-            // .when("widget-heading.view.client.html", {
-            //     templateUrl: "views/widget/templates/widget-edit.view.client.html",
-            //     controller: "WidgetEditController",
-            //     controllerAs:"model"
-            // })
+            .when("/user/:uid/website/:wid/page/:pid/widget/create/:wgtype", {
+            templateUrl: "views/widget/templates/widget-new.view.client.html",
+            controller: "WidgetNewController",
+            controllerAs:"model"
+            })
             .when("/user/:uid/website/:wid/page/:pid/widget/:wgid", {
                 templateUrl: "views/widget/templates/widget-edit.view.client.html",
                 controller: "WidgetEditController",
                 controllerAs:"model"
             });
-
-
-        // $locationProvider.html5Mode(true);
     }
 })();

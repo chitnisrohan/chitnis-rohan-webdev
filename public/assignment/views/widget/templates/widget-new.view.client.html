@@ -1,42 +1,28 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="row container-fluid">
-        <!--<div class="col-sm-4 hidden-xs">-->
-            <!--<div class="navbar-brand pull-left">-->
-                <!--<a ng-click="model.goToWidgetList()" class="navbar-link">-->
-                    <!--<span class="glyphicon glyphicon-chevron-left wbdv-custom-color"></span>-->
-                <!--</a>-->
-            <!--</div>-->
-            <!--<div class="navbar-header">-->
-                <!--<a ng-click="model.goToWidgetChooser()" class="navbar-brand navbar-link">-->
-                    <!--<strong class="wbdv-custom-color">Choose Widget</strong>-->
-                <!--</a>-->
-            <!--</div>-->
-        <!--</div>-->
-        <div class="col-lg-1 visible-lg"></div>
-        <div class="col-xs-12 col-lg-10">
+        <div class="col-xs-12">
             <div class="navbar-brand pull-left wbdv-no-left-margin">
                 <a ng-click="model.goToWidgetList()">
                     <span class="glyphicon glyphicon-chevron-left wbdv-custom-color"></span>
                 </a>
             </div>
             <div class="navbar-brand pull-right">
-                <a ng-click="model.editWidget(model.widget)" class="navbar-link wbdv-no-right-margin">
+                <a ng-click="model.addWidget(model.widget)" class="navbar-link wbdv-no-right-margin">
                     <span class="glyphicon glyphicon-ok wbdv-custom-color"></span>
                 </a>
             </div>
             <div class="navbar-header">
                 <a class="navbar-brand navbar-link">
-                    <strong class="wbdv-custom-color">Widget Edit</strong>
+                    <strong class="wbdv-custom-color">Widget New</strong>
                 </a>
             </div>
         </div>
-        <div class="col-lg-1 visible-lg"></div>
     </div>
 </nav>
 
 
 <div class="container-fluid">
-    <div ng-switch on = "model.widget.widgetType">
+    <div ng-switch on = "model.widgetType">
         <div ng-switch-when = "HEADER">
             <div ng-include="'views/widget/templates/widget-manage-HEADER.view.client.html'"></div>
         </div>
