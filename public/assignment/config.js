@@ -5,6 +5,11 @@
 
     function configuration($routeProvider, $locationProvider) {
         $routeProvider
+            .when("/", {
+                templateUrl: "views/user/templates/login.view.client.html",
+                controller: "LoginController",
+                controllerAs: "model"
+            })
             .when("/login", {
                 templateUrl: "views/user/templates/login.view.client.html",
                 controller: "LoginController",
