@@ -10,13 +10,13 @@
         var pageId = $routeParams['pid'];
         vm.widgetType = $routeParams['wgtype'].toString();
 
+        vm.addWidget = addWidget;
+        vm.goToWidgetList = goToWidgetList;
+
         function init() {
             vm.mode = "new";
         }
         init();
-
-        vm.addWidget = addWidget;
-        vm.goToWidgetList = goToWidgetList;
 
         function goToWidgetList() {
             $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget");
