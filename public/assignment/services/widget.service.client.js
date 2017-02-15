@@ -28,6 +28,9 @@
             if(widget.widgetType === "HEADER") {
                 newWidget = { "_id": (new Date()).getTime().toString(),
                     "widgetType": widget.widgetType, "pageId": pageId, "size": widget.size, "text": widget.text};
+            } else if (widget.widgetType === "HTML") {
+                newWidget = { "_id": (new Date()).getTime().toString(),
+                    "widgetType": widget.widgetType, "pageId": pageId, "text": widget.text};
             } else {
                 newWidget = { "_id": (new Date()).getTime().toString(),
                     "widgetType": widget.widgetType, "pageId": pageId, "width": widget.width, "url": widget.url};
@@ -67,6 +70,9 @@
                 if (widgetToBeUpdated._id === widgetId) {
                     if(widgetToBeUpdated.widgetType === "HEADER") {
                         widgetToBeUpdated.size = widget.size;
+                        widgetToBeUpdated.text = widget.text;
+                        return angular.copy(widgetToBeUpdated);
+                    } else if(widgetToBeUpdated.widgetType === "HTML") {
                         widgetToBeUpdated.text = widget.text;
                         return angular.copy(widgetToBeUpdated);
                     } else {

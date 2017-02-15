@@ -14,6 +14,11 @@
         vm.goToWidgetChooser = goToWidgetChooser;
         vm.goToEditWidget = goToEditWidget;
         vm.goToProfile = goToProfile;
+        vm.getTrustedHtml = getTrustedHtml;
+
+        function getTrustedHtml(text) {
+            return $sce.trustAsHtml(text);
+        }
 
         function init() {
             vm.widgetTypeList = [];

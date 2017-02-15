@@ -9,12 +9,22 @@
 
         vm.registerUser = registerUser;
 
-        function registerUser(newUser){
-            var user = UserService.createUser(newUser);
-            if(user == null) {
-                vm.error = "unable to register user";
+        // newUser.username != null &&
+        // newUser.firstName != null &&
+        // newUser.lastName != null &&
+        // newUser.password != null &&
+        // newUser.verify.password != null
+
+        function registerUser(newUser) {
+            if (newUser.password === newUser.verify.password) {
+                var user = UserService.createUser(newUser);
+                if (user == null) {
+                    vm.error = "unable to register user";
+                } else {
+                    $location.url("/user/" + user._id);
+                }
             } else {
-                $location.url("/user/"+user._id);
+                    vm.error = "passwords do not match";
             }
         }
     }

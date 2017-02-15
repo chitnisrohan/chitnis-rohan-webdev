@@ -21,8 +21,11 @@
         return api;
 
         function createUser(newUser) {
-            var user = {_id: (new Date()).getTime().toString(), username: newUser.username,    password: newUser.password,
-                firstName: newUser.firstName,  lastName: newUser.lastName};
+            var user = {_id: (new Date()).getTime().toString(),
+                username: newUser.username,
+                password: newUser.password,
+                firstName: newUser.firstName,
+                lastName: newUser.lastName};
             users.push(user);
             return user;
         }

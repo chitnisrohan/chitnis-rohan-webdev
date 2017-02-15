@@ -45,6 +45,8 @@
             var newWidget;
             if(vm.widget.widgetType === "HEADER") {
                 newWidget = {"text": widgetToBeEdited.text, "size": widgetToBeEdited.size};
+            } else if (vm.widget.widgetType === "HTML") {
+                newWidget = {"text": widgetToBeEdited.text};
             } else {
                 newWidget = {"width": widgetToBeEdited.width, "url": widgetToBeEdited.url};
             }
