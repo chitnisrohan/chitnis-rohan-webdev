@@ -15,7 +15,8 @@
             "findUserById": findUserById,
             "updateUser" : updateUser,
             "deleteUser" : deleteUser,
-            "createUser" : createUser
+            "createUser" : createUser,
+            "findUserByUsername" : findUserByUsername
         };
         return api;
 

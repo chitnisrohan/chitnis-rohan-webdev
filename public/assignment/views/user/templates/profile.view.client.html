@@ -9,8 +9,10 @@
                     </a>
                 </div>
                 <div>
-                    <a ng-click="model.update(model.user)" class="navbar-brand navbar-link pull-right">
-                        <span class="glyphicon glyphicon-ok wbdv-custom-color"></span>
+                    <a ng-click="model.update(model.user)"
+                       class="navbar-brand navbar-link pull-right">
+                        <span class="glyphicon glyphicon-ok wbdv-custom-color">
+                        </span>
                     </a>
                 </div>
             </div>
@@ -64,11 +66,20 @@
             </form>
 
 
-            <a class="btn btn-primary btn-block" ng-click="model.update(model.user)">Update</a>
+            <a class="btn btn-primary btn-block"
+               ng-click="model.update(model.user)">
+                Update
+            </a>
 
-            <a class="btn btn-danger btn-block" ng-click="model.deleteUser(model.user)">Delete</a>
+            <!--<a class="btn btn-danger btn-block"-->
+               <!--ng-click="model.deleteUser(model.user)">-->
+                <!--Delete-->
+            <!--</a>-->
 
-            <a class="btn btn-primary btn-block" ng-click="model.websiteList(model.user._id)">Websites</a>
+            <a class="btn btn-primary btn-block"
+               ng-click="model.websiteList(model.user._id)">
+                Websites
+            </a>
 
             <a class="btn btn-danger  btn-block"
                href="#/login">Logout</a>
@@ -82,8 +93,14 @@
         <div class="row">
             <div class="col-lg-1 visible-lg"></div>
             <div class="navbar-footer col-sm-12 col-xs-12 col-md-12 col-lg-10">
+                <a class="navbar-brand navbar-link pull-left"
+                   ng-click="model.deleteUser(model.user)">
+                    <span class="glyphicon glyphicon-remove wbdv-custom-color">
+                    </span>
+                </a>
                 <a class="navbar-brand navbar-link pull-right">
-                    <span class="glyphicon glyphicon-user wbdv-custom-color"></span>
+                    <span class="glyphicon glyphicon-user wbdv-custom-color">
+                    </span>
                 </a>
             </div>
             <div class="col-lg-1 visible-lg"></div>

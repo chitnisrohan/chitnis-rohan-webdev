@@ -3,7 +3,8 @@
         <div class="col-sm-4 hidden-xs">
             <div class="navbar-brand pull-left">
                 <a ng-click="model.goToWebsiteList()" class="navbar-link">
-                    <span class="glyphicon glyphicon-chevron-left wbdv-custom-color"></span>
+                    <span class="glyphicon glyphicon-chevron-left wbdv-custom-color">
+                    </span>
                 </a>
             </div>
             <div class="navbar-brand pull-right">
@@ -20,12 +21,15 @@
 
         <div class="col-sm-8 col-xs-12">
             <div class="navbar-brand pull-left hidden-sm hidden-md hidden-lg">
-                <a ng-click="model.goToWebsiteList()" class="navbar-link wbdv-no-left-margin">
-                    <span class="glyphicon glyphicon-chevron-left wbdv-custom-color"></span>
+                <a ng-click="model.goToWebsiteList()"
+                   class="navbar-link wbdv-no-left-margin">
+                    <span class="glyphicon glyphicon-chevron-left wbdv-custom-color">
+                    </span>
                 </a>
             </div>
             <div class="navbar-brand pull-right">
-                <a ng-click="model.createWebsite(model.website)" class="navbar-link wbdv-no-right-margin">
+                <a ng-click="model.createWebsite(model.website)"
+                   class="navbar-link wbdv-no-right-margin">
                     <span class="glyphicon glyphicon-ok wbdv-custom-color"></span>
                 </a>
             </div>
@@ -45,7 +49,8 @@
                 <a ng-click="model.goToWebsite(website._id)">
                     {{website.name}}
                 </a>
-                <a ng-click="model.goToEditWebsite(website._id)" class="pull-right">
+                <a ng-click="model.goToEditWebsite(website._id)"
+                   class="pull-right">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
             </li>
@@ -81,8 +86,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <a ng-click="model.goToProfile()" class="navbar-brand navbar-link pull-right">
-                    <span class="glyphicon glyphicon-user wbdv-custom-color"></span>
+                <a ng-click="model.goToProfile()"
+                   class="navbar-brand navbar-link pull-right">
+                    <span class="glyphicon glyphicon-user wbdv-custom-color">
+                    </span>
                 </a>
             </div>
         </div>
