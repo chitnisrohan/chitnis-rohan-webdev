@@ -1,7 +1,8 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="row">
-            <div class="navbar-header col-xs-12">
+            <div class="col-lg-1 visible-lg"></div>
+            <div class="navbar-header col-sm-12 col-xs-12 col-md-12 col-lg-10">
                 <a ng-click="model.goToWebsiteList()" class="navbar-brand navbar-link pull-left">
                     <span class="glyphicon glyphicon-chevron-left wbdv-custom-color"></span>
                 </a>
@@ -12,11 +13,14 @@
                     <span class="glyphicon glyphicon-plus wbdv-custom-color"></span>
                 </a>
             </div>
+            <div class="col-lg-1 visible-lg"></div>
         </div>
     </div>
 </nav>
 
-<div class="container-fluid wbdv-margin-if-fixed-header wbdv-margin-if-fixed-footer">
+<div class="col-lg-1 visible-lg"></div>
+<div class="container-fluid wbdv-margin-if-fixed-header
+wbdv-margin-if-fixed-footer col-sm-12 col-xs-12 col-md-12 col-lg-10">
     <ul ng-repeat="page in model.pageList" class="list-group">
         <li class="list-group-item">
             <a ng-click="model.goToWidgetList(page._id)">
@@ -28,15 +32,18 @@
         </li>
     </ul>
 </div>
+<div class="col-lg-1 visible-lg"></div>
 
 <nav class="navbar navbar-fixed-bottom bg-primary">
     <div class="container-fluid">
         <div class="row">
-            <div class="navbar-footer col-xs-12">
+            <div class="col-lg-1 visible-lg"></div>
+            <div class="navbar-footer col-sm-12 col-xs-12 col-md-12 col-lg-10">
                 <a ng-click="model.goToProfile()" class="navbar-brand navbar-link pull-right">
                     <span class="glyphicon glyphicon-user wbdv-custom-color"></span>
                 </a>
             </div>
+            <div class="col-lg-1 visible-lg"></div>
         </div>
     </div>
 </nav>

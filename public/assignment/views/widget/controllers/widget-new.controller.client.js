@@ -16,6 +16,11 @@
         init();
 
         vm.addWidget = addWidget;
+        vm.goToWidgetList = goToWidgetList;
+
+        function goToWidgetList() {
+            $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget");
+        }
         
         function addWidget(widget) {
             var newWidget;
