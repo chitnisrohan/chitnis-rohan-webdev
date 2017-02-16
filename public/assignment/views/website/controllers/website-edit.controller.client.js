@@ -54,7 +54,7 @@
         }
 
         function editWebsite() {
-            var website = {_id: (new Date()).getTime().toString(), name: vm.website.name,    developerId: userId,
+            var website = {name: vm.website.name,    developerId: userId,
                 description: vm.website.description};
             var updatedWebsite = WebsiteService.updateWebsite(websiteId,website);
             if(updatedWebsite == null){
