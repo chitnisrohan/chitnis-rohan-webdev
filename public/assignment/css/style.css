@@ -11,6 +11,10 @@ body {
     margin-right: 0.5%;
 }
 
+.text-alignment{
+    text-align: center;
+}
+
 .importantFields {
     color: red;
 }

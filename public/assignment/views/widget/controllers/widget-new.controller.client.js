@@ -12,11 +12,17 @@
 
         vm.addWidget = addWidget;
         vm.goToWidgetList = goToWidgetList;
+        vm.goToProfile = goToProfile;
 
         function init() {
             vm.mode = "new";
         }
         init();
+
+        function goToProfile() {
+            $location.url("/user/"+ userId);
+        }
+
 
         function goToWidgetList() {
             $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget");
