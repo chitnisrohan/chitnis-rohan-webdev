@@ -42,7 +42,8 @@
                 </div>
                 <div class="form-group">
                     <label for="email">Email address</label>
-                    <input type="email"
+                    <input ng-model="model.user.email"
+                           type="email"
                            class="form-control"
                            id="email"
                            placeholder="alice@wonderland.com">
@@ -70,11 +71,6 @@
                ng-click="model.update(model.user)">
                 Update
             </a>
-
-            <!--<a class="btn btn-danger btn-block"-->
-               <!--ng-click="model.deleteUser(model.user)">-->
-                <!--Delete-->
-            <!--</a>-->
 
             <a class="btn btn-primary btn-block"
                ng-click="model.websiteList(model.user._id)">
