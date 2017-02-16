@@ -56,7 +56,8 @@
         }
 
         function createWebsite(userId, website) {
-            var newWebsite = {_id: (new Date()).getTime().toString(), name: website.name,    developerId: userId,
+            var newWebsite = {_id: (new Date()).getTime().toString(), name: website.name,
+                developerId: userId,
                 description: website.description};
             websites.push(newWebsite);
             return angular.copy(newWebsite);
