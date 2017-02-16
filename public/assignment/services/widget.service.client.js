@@ -36,7 +36,7 @@
                     "widgetType": widget.widgetType, "pageId": pageId, "width": widget.width, "url": widget.url};
             }
             widgets.push(newWidget);
-            return newWidget;
+            return angular.copy(newWidget);
         }
 
         function findWidgetsByPageId(pageId) {

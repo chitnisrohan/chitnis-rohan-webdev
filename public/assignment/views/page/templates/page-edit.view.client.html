@@ -60,7 +60,8 @@
         <form>
             <div class="form-group">
                 <label for="pagename">Page Name</label>
-                <input type="text"
+                <input ng-model="model.page.name"
+                       type="text"
                        class="form-control"
                        id="pagename"
                        value="{{model.page.name}}">

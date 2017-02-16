@@ -27,7 +27,7 @@
                 var wsite = websites[w];
                 if(wsite._id === websiteId){
                     wsite.name = website.name;
-                    wsite.description = wsite.description;
+                    wsite.description = website.description;
                     return angular.copy(wsite);
                 }
             }
@@ -49,7 +49,7 @@
             for(var w in websites){
                 var website = websites[w];
                 if(website._id === websiteId){
-                    return website;
+                    return angular.copy(website);
                 }
             }
             return null;
@@ -59,7 +59,7 @@
             var newWebsite = {_id: (new Date()).getTime().toString(), name: website.name,    developerId: userId,
                 description: website.description};
             websites.push(newWebsite);
-            return newWebsite;
+            return angular.copy(newWebsite);
         }
 
         function findWebsitesByUser(userId) {
@@ -74,7 +74,7 @@
                 return null;
             }
             else{
-                return websiteList;
+                return angular.copy(websiteList);
             }
         }
 
