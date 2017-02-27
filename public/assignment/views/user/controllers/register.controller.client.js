@@ -17,12 +17,15 @@
 
         function registerUser(newUser) {
             if (newUser.password === newUser.verify.password) {
-                var user = UserService.createUser(newUser);
-                if (user == null) {
-                    vm.error = "unable to register user";
-                } else {
-                    $location.url("/user/" + user._id);
-                }
+                var user = UserService
+                    .createUser(newUser)
+                    .success(function (user) {
+                        if (user == null) {
+                            vm.error = "unable to register user";
+                        } else {
+                            $location.url("/user/" + user._id);
+                        }
+                    });
             } else {
                     vm.error = "passwords do not match";
             }
