@@ -13,7 +13,11 @@
         vm.goToProfile = goToProfile;
 
         function init() {
-            vm.websiteList = WebsiteService.findWebsitesByUser(userId);
+            WebsiteService
+                .findWebsitesByUser(userId)
+                .success(function (websites) {
+                    vm.websiteList = websites;
+                });
         }
         init();
 

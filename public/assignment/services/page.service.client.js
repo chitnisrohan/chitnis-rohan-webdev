@@ -3,7 +3,8 @@
         .module("WebAppMaker")
         .factory("PageService", pageService);
 
-    function pageService() {
+    function pageService($http) {
+
 
         var api = {
             "createPage":createPage,
@@ -15,59 +16,23 @@
         return api;
 
         function createPage(websiteId, page) {
-            var newPage = {_id: (new Date()).getTime().toString(), name: page.name,    websiteId: websiteId,
-                description: page.description};
-            pages.push(newPage);
-            return angular.copy(newPage);
+            return $http.post("/api/website/"+websiteId+"/page", page);
         }
 
         function findPageByWebsiteId(websiteId) {
-            var pageList = [];
-            for (p in pages){
-                var page = pages[p];
-                if(page.websiteId === websiteId){
-                    pageList.push(page);
-                }
-            }
-            if(pageList.size < 1){
-                return null;
-            }
-            else{
-                return angular.copy(pageList);
-            }
+            return $http.get("/api/website/"+websiteId+"/page");
         }
 
         function findPageById(pageId) {
-            for (p in pages) {
-                var page = pages[p];
-                if(page._id === pageId) {
-                    return angular.copy(page);
-                }
-            }
-            return null;
+            return $http.get("/api/page/"+pageId);
         }
 
         function updatePage(pageId, page) {
-            for (p in pages) {
-                var newPage = pages[p];
-                if(newPage._id === pageId) {
-                    newPage.name = page.name;
-                    newPage.description = page.description;
-                    return angular.copy(newPage);
-                }
-            }
-            return null;
+            return $http.put("/api/page/"+pageId, page);
         }
 
         function deletePage(pageId) {
-            for (p in pages) {
-                var page = pages[p];
-                if(page._id === pageId) {
-                    pages.splice(p,1);
-                    return angular.copy(page);
-                }
-            }
-            return null;
+            return $http.delete("/api/page/"+pageId);
         }
 
     }

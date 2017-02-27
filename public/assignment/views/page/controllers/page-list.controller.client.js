@@ -15,7 +15,11 @@
         vm.goToWidgetList = goToWidgetList;
 
         function init() {
-            vm.pageList = PageService.findPageByWebsiteId(websiteId);
+            PageService
+                .findPageByWebsiteId(websiteId)
+                .success(function (pages) {
+                    vm.pageList = pages;
+                });
         }
         init();
 

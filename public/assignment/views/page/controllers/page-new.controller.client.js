@@ -15,7 +15,11 @@
         vm.goToWidgetList = goToWidgetList;
 
         function init() {
-            vm.pageList = PageService.findPageByWebsiteId(websiteId);
+            PageService
+                .findPageByWebsiteId(websiteId)
+                .success(function (pageList) {
+                    vm.pageList = pageList;
+                });
         }
         init();
 
@@ -37,12 +41,15 @@
         
         function createPage(page) {
             var newPage = {"name": page.name, "description": page.description };
-            newPage = PageService.createPage(websiteId, newPage);
-            if (newPage == null) {
-                vm.error = "Page cannot be added";
-            } else {
-                goToPageList();
-            }
+            newPage = PageService
+                .createPage(websiteId, newPage)
+                .success(function (newPage) {
+                    if (newPage == null) {
+                        vm.error = "Page cannot be added";
+                    } else {
+                        goToPageList();
+                    }
+                });
         }
     }
 })();

@@ -16,13 +16,7 @@
         return api;
 
         function createUser(newUser) {
-            var user = {_id: (new Date()).getTime().toString(),
-                username: newUser.username,
-                password: newUser.password,
-                firstName: newUser.firstName,
-                lastName: newUser.lastName,
-                email: newUser.email};
-            return $http.post("/api/user", user);
+            return $http.post("/api/user", newUser);
         }
 
         function deleteUser(userId) {

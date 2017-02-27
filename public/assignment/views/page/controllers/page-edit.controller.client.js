@@ -18,8 +18,16 @@
         vm.goToWidgetList = goToWidgetList;
 
         function init() {
-            vm.pageList = PageService.findPageByWebsiteId(websiteId);
-            vm.page = PageService.findPageById(pageId);
+            PageService
+                .findPageByWebsiteId(websiteId)
+                .success(function (pageList) {
+                    vm.pageList = pageList;
+                });
+            PageService
+                .findPageById(pageId)
+                .success(function (page) {
+                    vm.page = page;
+                });
         }
         init();
 
@@ -28,12 +36,15 @@
         }
 
         function deletePage() {
-            var deletedPage = PageService.deletePage(pageId);
-            if (deletedPage == null) {
-                vm.error = "Page cannot be deleted";
-            } else {
-                goToPageList();
-            }
+            PageService
+                .deletePage(pageId)
+                .success(function (deletedPage) {
+                    if (deletedPage == null) {
+                        vm.error = "Page cannot be deleted";
+                    } else {
+                        goToPageList();
+                    }
+                });
         }
 
         function goToProfile() {
@@ -54,12 +65,15 @@
 
         function editPage(page) {
             var pageToEdit = {"name": page.name, "description": page.description};
-            pageToEdit = PageService.updatePage(pageId,pageToEdit);
-            if(pageToEdit == null) {
-                vm.error = "Page cannot be edited";
-            } else {
-                goToPageList();
-            }
+            PageService
+                .updatePage(pageId,pageToEdit)
+                .success(function (pageToEdit) {
+                    if(pageToEdit == null) {
+                        vm.error = "Page cannot be edited";
+                    } else {
+                        goToPageList();
+                    }
+                });
         }
     }
 })();

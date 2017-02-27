@@ -14,7 +14,11 @@
         vm.goToWebsite = goToWebsite;
 
         function init() {
-            vm.websiteList = WebsiteService.findWebsitesByUser(userId);
+            WebsiteService
+                .findWebsitesByUser(userId)
+                .success(function (websiteList) {
+                    vm.websiteList = websiteList;
+                });
         }
         init();
 
@@ -38,12 +42,15 @@
 
         function createWebsite(website) {
             var newWebsite = {"name": website.name, "description": website.description};
-            newWebsite = WebsiteService.createWebsite(userId,newWebsite);
-            if(newWebsite == null){
-                vm.error = "Website cannot be added";
-            }else{
-                goToWebsiteList();
-            }
+            WebsiteService
+                .createWebsite(userId,newWebsite)
+                .success(function (newWebsite) {
+                    if(newWebsite == null){
+                        vm.error = "Website cannot be added";
+                    }else{
+                        goToWebsiteList();
+                    }
+                });
         }
     }
 })();
