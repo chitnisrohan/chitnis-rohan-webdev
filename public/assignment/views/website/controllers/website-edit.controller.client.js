@@ -17,8 +17,16 @@
         vm.goToWebsite = goToWebsite;
 
         function init() {
-            vm.website = WebsiteService.findWebsiteById(websiteId);
-            vm.websiteList = WebsiteService.findWebsitesByUser(userId);
+            WebsiteService
+                .findWebsiteById(websiteId)
+                .success(function (website) {
+                    vm.website = website;
+                });
+            WebsiteService
+                .findWebsitesByUser(userId)
+                .success(function (websiteList) {
+                    vm.websiteList = websiteList;
+                });
         }
         init();
 
@@ -45,23 +53,29 @@
         }
 
         function deleteWebsite() {
-            var deletedWebsite = WebsiteService.deleteWebsite(websiteId);
-            if(deletedWebsite == null){
-                vm.error = "Website cannot be deleted";
-            }else{
-                $location.url("/user/"+ userId +"/website/");
-            }
+            var deletedWebsite = WebsiteService
+                .deleteWebsite(websiteId)
+                .success(function (deletedWebsite) {
+                    if(deletedWebsite == null){
+                        vm.error = "Website cannot be deleted";
+                    }else{
+                        $location.url("/user/"+ userId +"/website/");
+                    }
+                });
         }
 
         function editWebsite() {
             var website = {name: vm.website.name,    developerId: userId,
                 description: vm.website.description};
-            var updatedWebsite = WebsiteService.updateWebsite(websiteId,website);
-            if(updatedWebsite == null){
-                vm.error = "Website cannot be updated";
-            }else{
-                $location.url("/user/"+ userId +"/website/");
-            }
+            var updatedWebsite = WebsiteService
+                .updateWebsite(websiteId,website)
+                .success(function (updatedWebsite) {
+                    if(updatedWebsite == null){
+                        vm.error = "Website cannot be updated";
+                    }else{
+                        $location.url("/user/"+ userId +"/website/");
+                    }
+                });
         }
     }
 })();
