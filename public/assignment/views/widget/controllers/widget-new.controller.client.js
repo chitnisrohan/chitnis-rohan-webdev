@@ -38,12 +38,15 @@
                 newWidget = {"url": widget.url, "width": widget.width, "widgetType" : vm.widgetType};
             }
 
-            newWidget = WidgetService.createWidget(pageId,newWidget);
-            if(newWidget == null) {
-                console.log("error");
-            } else {
-                $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget/");
-            }
+            WidgetService
+                .createWidget(pageId,newWidget)
+                .success(function (newWidget) {
+                    if(newWidget == null) {
+                        console.log("error");
+                    } else {
+                        $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget/");
+                    }
+                });
         }
 
     }

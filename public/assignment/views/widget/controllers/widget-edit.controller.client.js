@@ -28,12 +28,15 @@
         }
         
         function deleteWidget(widget) {
-            var deletedWidget = WidgetService.deleteWidget(widget._id);
-            if(deletedWidget == null) {
-                vm.error = "widget could not be deleted";
-            } else {
-                $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget");
-            }
+            WidgetService
+                .deleteWidget(widget._id)
+                .success(function (deletedWidget) {
+                    if(deletedWidget == null) {
+                        vm.error = "widget could not be deleted";
+                    } else {
+                        $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget");
+                    }
+                });
         }
         
 
@@ -51,23 +54,28 @@
                 newWidget = {"width": widgetToBeEdited.width, "url": widgetToBeEdited.url};
             }
 
-            var updatedWidget = WidgetService.updateWidget(widgetId, newWidget);
-
-            if(updatedWidget == null) {
-                vm.error = "widget could not be updated";
-            } else {
-                $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget");
-            }
+            WidgetService
+                .updateWidget(widgetId, newWidget)
+                .success(function (updatedWidget) {
+                    if(updatedWidget == null) {
+                        vm.error = "widget could not be updated";
+                    } else {
+                        $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget");
+                    }
+                });
         }
 
         function getWidgetById() {
-            var widget = WidgetService.findWidgetById(widgetId);
-            if(widget === null) {
-                vm.error = "could not find widget";
-            }
-            else {
-                vm.widget = widget;
-            }
+            var widget = WidgetService
+                .findWidgetById(widgetId)
+                .success(function (widget) {
+                    if(widget === null) {
+                        vm.error = "could not find widget";
+                    }
+                    else {
+                        vm.widget = widget;
+                    }
+                });
         }
 
         function goToWidgetChooser() {

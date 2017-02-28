@@ -19,7 +19,11 @@
         function init() {
             vm.widgetTypeList = [];
             vm.widgetTextList = [];
-            vm.widgets = WidgetService.findWidgetsByPageId(pageId);
+            WidgetService
+                .findWidgetsByPageId(pageId)
+                .success(function (widgets) {
+                    vm.widgets = widgets;
+                });
             for(var w in vm.widgets) {
                 var widget = vm.widgets[w];
                 vm.widgetTypeList.push(widget.widgetType);
