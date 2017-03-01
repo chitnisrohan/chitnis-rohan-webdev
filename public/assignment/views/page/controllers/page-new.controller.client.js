@@ -41,7 +41,7 @@
         
         function createPage(page) {
             var newPage = {"name": page.name, "description": page.description };
-            newPage = PageService
+            PageService
                 .createPage(websiteId, newPage)
                 .success(function (newPage) {
                     if (newPage == null) {

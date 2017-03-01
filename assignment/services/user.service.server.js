@@ -15,14 +15,22 @@ module.exports = function (app) {
 
     function createUser(req, res) {
         var newUser = req.body;
-        var user = {_id: (new Date()).getTime().toString(),
-            username: newUser.username,
-            password: newUser.password,
-            firstName: newUser.firstName,
-            lastName: newUser.lastName,
-            email: newUser.email};
-        users.push(user);
-        res.json(user);
+        var checkuser = users.find(function (user) {
+            return user.username == newUser.username;
+        });
+        if(checkuser == null) {
+            var user = {_id: (new Date()).getTime().toString(),
+                username: newUser.username,
+                password: newUser.password,
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+                email: newUser.email};
+            users.push(user);
+            res.json(user);
+        } else {
+            res.send('Username already taken. Please choose another Username');
+            //res.sendStatus(404).send('Username already taken. Please choose another Username');
+        }
     }
 
     function deleteUser(req, res) {

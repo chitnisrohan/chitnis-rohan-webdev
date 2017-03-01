@@ -29,12 +29,14 @@
 
     <div class="col-sm-12 col-xs-12 col-md-12 col-lg-10">
 
+        <div wbdv-sortable="">
+
         <div ng-repeat="widget in model.widgets">
             <div class="wbdv-jga-toolbar">
                 <a ng-click="model.goToEditWidget(widget._id)">
                     <span class="glyphicon glyphicon-cog"></span>
                 </a>
-                <a>
+                <a class="handle">
                     <span class="glyphicon glyphicon-align-justify"></span>
                 </a>
             </div>
@@ -56,6 +58,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 

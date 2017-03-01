@@ -20,8 +20,8 @@
                 var user = UserService
                     .createUser(newUser)
                     .success(function (user) {
-                        if (user == null) {
-                            vm.error = "unable to register user";
+                        if (user === 'Username already taken. Please choose another Username') {
+                            vm.error = user;
                         } else {
                             $location.url("/user/" + user._id);
                         }
