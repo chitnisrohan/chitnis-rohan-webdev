@@ -20,6 +20,9 @@
 
         function init() {
             getWidgetById();
+            vm.pageId = pageId;
+            vm.websiteId = websiteId;
+            vm.userId = userId;
         }
         init();
 

@@ -3,7 +3,7 @@
     <div class="col-lg-1 visible-lg"></div>
     <div class="col-sm-12 col-xs-12 col-md-12 col-lg-10">
         <h2 class="text-alignment">Image Widget</h2>
-        <form>
+        <form action="/api/upload"   method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text"
@@ -40,20 +40,27 @@
                     <option value="20%">20%</option>
                 </select>
             </div>
+                <!--<input type="file"-->
+                       <!--class="form-control"-->
+                       <!--id="upload"-->
+                       <!--value="Delete">-->
             <div class="form-group">
-                <label for="upload">Upload</label>
-                <input type="file"
-                       class="form-control"
-                       id="upload"
-                       value="Delete">
+                <label for="myFile">Upload</label>
+                <input  id="myFile" name="myFile"    type="file" class="form-control"/>
+                <!--<input  name="width"     value="{{model.widget.width}}" style="display: none"/>-->
+                <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
+                <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
+                <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
+                <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
+                <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
             </div>
-            <div class="form-group">
-                <input ng-show="model.mode !='new'"
-                       type="button"
-                       class="form-control btn-primary"
-                       id="upload_image"
-                       value="Upload Image">
-            </div>
+            <!--<div class="form-group">-->
+                <!--<input ng-show="model.mode !='new'"-->
+                       <!--type="button"-->
+                       <!--class="form-control btn-primary"-->
+                       <!--id="upload_image"-->
+                       <!--value="Upload Image">-->
+            <!--</div>-->
             <div class="form-group">
                 <a ng-show="model.mode !='new'"
                    class="btn btn-danger form-control"

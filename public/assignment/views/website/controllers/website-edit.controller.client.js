@@ -53,7 +53,7 @@
         }
 
         function deleteWebsite() {
-            var deletedWebsite = WebsiteService
+            WebsiteService
                 .deleteWebsite(websiteId)
                 .success(function (deletedWebsite) {
                     if(deletedWebsite == null){
@@ -67,7 +67,7 @@
         function editWebsite() {
             var website = {name: vm.website.name,    developerId: userId,
                 description: vm.website.description};
-            var updatedWebsite = WebsiteService
+            WebsiteService
                 .updateWebsite(websiteId,website)
                 .success(function (updatedWebsite) {
                     if(updatedWebsite == null){

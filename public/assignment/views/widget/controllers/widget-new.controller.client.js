@@ -16,6 +16,9 @@
 
         function init() {
             vm.mode = "new";
+            vm.userId = userId;
+            vm.websiteId = websiteId;
+            vm.pageId = pageId;
         }
         init();
 

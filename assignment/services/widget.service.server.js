@@ -16,6 +16,62 @@ module.exports = function (app) {
             "url": "https://www.youtube.com/embed/AfeDwkIaHNY" }
     ];
 
+
+    ///////////////
+    var multer = require('multer'); // npm install multer --save
+
+    var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, __dirname + "/../../public/uploads")
+        },
+        filename: function (req, file, cb) {
+            var extArray = file.mimetype.split("/");
+            var extension = extArray[extArray.length - 1];
+            cb(null, 'widget_image_' + Date.now() + '.' + extension)
+        }
+    });
+    var upload = multer({storage: storage});
+
+    app.post("/api/upload", upload.single('myFile'), uploadImage);
+
+    function uploadImage(req, res) {
+        var pageId = req.body.pageId;
+        var widgetId_update = req.body.widgetId;
+        var width = req.body.width;
+        var userId = req.body.userId;
+        var websiteId = req.body.websiteId;
+        var myFile = req.file;
+        var destination = myFile.destination; // folder where file is saved to
+        if (widgetId_update) {
+            var widgetId = widgetId_update;
+        }else{
+
+            var widgetId = ((new Date()).getTime()).toString();
+            var newWidget = {
+                _id: widgetId,
+                widgetType: "IMAGE",
+                pageId: pageId,
+                width: width,
+                url: ""
+                // url:widget.url
+            };
+            widgets.push(newWidget);
+        }
+
+        for (var i in widgets) {
+
+            if (widgets[i]._id == widgetId) {
+                widgets[i].width = width;
+                widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+
+            }
+        }
+
+        res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
+    }
+
+    ///////////////
+
     function deleteWidget(req, res) {
         var widgetId = req.params.widgetId;
         for(var w in widgets) {
