@@ -26,7 +26,6 @@
             $location.url("/user/"+ userId);
         }
 
-
         function goToWidgetList() {
             $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget");
         }
@@ -45,7 +44,7 @@
                 .createWidget(pageId,newWidget)
                 .success(function (newWidget) {
                     if(newWidget == null) {
-                        console.log("error");
+                        vm.error = "error adding widget";
                     } else {
                         $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget/");
                     }
