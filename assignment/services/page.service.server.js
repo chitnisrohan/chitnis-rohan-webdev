@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = function (app, model) {
     app.get("/api/website/:websiteId/page", findPageByWebsiteId);
     app.post("/api/website/:websiteId/page", createPage);
     app.get("/api/page/:pageId", findPageById);
@@ -56,10 +56,34 @@ module.exports = function (app) {
     function createPage(req, res) {
         var websiteId = req.params.websiteId;
         var page = req.body;
-        var newPage = {_id: (new Date()).getTime().toString(), name: page.name,    websiteId: websiteId,
-            description: page.description};
-        pages.push(newPage);
-        res.json(newPage);
+
+        model
+            .pageModel
+            .createPage(websiteId, page)
+            .then(
+                function (page) {
+                    console.log(page);
+                    model
+                        .websiteModel
+                        .addPageToWebsite(websiteId, page._id)
+                        .then(
+                            function () {
+                                res.json(page);
+                            },
+                            function (err) {
+                                res.sendStatus(400).send(err);
+                            }
+                        );
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+
+        // var newPage = {_id: (new Date()).getTime().toString(), name: page.name,    websiteId: websiteId,
+        //     description: page.description};
+        // pages.push(newPage);
+        // res.json(newPage);
     }
 
 };

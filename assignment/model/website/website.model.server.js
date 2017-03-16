@@ -11,9 +11,24 @@ module.exports = function () {
         findAllWebsitesForUser: findAllWebsitesForUser,
         findWebsiteById: findWebsiteById,
         deleteWebsite: deleteWebsite,
-        updateWebsite: updateWebsite
+        updateWebsite: updateWebsite,
+        addPageToWebsite: addPageToWebsite
     };
     return api;
+
+    function addPageToWebsite(websiteId, pageId) {
+        var deferred = Q.defer();
+        console.log(websiteId);
+        WebsiteModel
+            .update({_id : websiteId}, {$push : {pages : pageId}}, function (err, updatedWebsite) {
+                if (err) {
+                    deferred.abort(err);
+                } else {
+                    deferred.resolve(updatedWebsite);
+                }
+            });
+        return deferred.promise;
+    }
 
     function updateWebsite(websiteId, website) {
         var deferred = Q.defer();
