@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = function (app, model) {
 
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
@@ -15,54 +15,63 @@ module.exports = function (app) {
 
     function createUser(req, res) {
         var newUser = req.body;
-        var checkuser = users.find(function (user) {
-            return user.username == newUser.username;
-        });
-        if(checkuser == null) {
-            var user = {_id: (new Date()).getTime().toString(),
-                username: newUser.username,
-                password: newUser.password,
-                firstName: newUser.firstName,
-                lastName: newUser.lastName,
-                email: newUser.email};
-            users.push(user);
-            res.json(user);
-        } else {
-            res.send('Username already taken. Please choose another Username');
-            //res.sendStatus(404).send('Username already taken. Please choose another Username');
-        }
+        model
+            .userModel
+            .createUser(newUser)
+            .then(
+                function (newUser) {
+                    res.send(newUser);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
     }
 
     function deleteUser(req, res) {
         var userId = req.params.userId;
-        for(var u in users) {
-            var user = users[u];
-            if( user._id === userId ) {
-                users.splice(u,1);
-                res.json(user);
-                break;
-            }
-        }
+        model
+            .userModel
+            .deleteUser(userId)
+            .then(
+                function (newUser) {
+                    res.send(newUser);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
     }
 
     function updateUser(req, res) {
         var userId = req.params.userId;
         var newUser = req.body;
-        var user = users.find(function (user) {
-            return user._id == userId;
-        });
-        user.firstName = newUser.firstName;
-        user.lastName = newUser.lastName;
-        user.email = newUser.email;
-        res.json(user);
+        model
+            .userModel
+            .updateUser(userId, newUser)
+            .then(
+                function (user) {
+                    res.send(user);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
     }
 
     function findUserById(req, res) {
         var userId = req.params.userId;
-        var user = users.find(function (user) {
-            return user._id == userId;
-        });
-        res.json(user);
+        model
+            .userModel
+            .findUserById(userId)
+            .then(
+                function (user) {
+                    res.send(user);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
     }
 
     function findUser(req, res) {
@@ -75,19 +84,33 @@ module.exports = function (app) {
 
     function findUserByUsername(req, res) {
         var username = req.query.username;
-        var user = users.find(function (user) {
-            return user.username == username;
-        });
-        res.json(user);
+        model
+            .userModel
+            .findUserByUsername(username)
+            .then(
+                function (user) {
+                    res.send(user);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
     }
 
     function findUserByCredential(req, res) {
         var username = req.query.username;
         var password = req.query.password;
-        var user = users.find(function (user) {
-            return user.password == password && user.username == username;
-        });
-        res.json(user);
-    }
+        model
+            .userModel
+            .findUserByCredentials(username, password)
+            .then(
+                function (user) {
+                    res.send(user);
+                },
+                function (err) {
+                    res.sendStatus(400).send(err);
+                }
+            );
+   }
 
 };

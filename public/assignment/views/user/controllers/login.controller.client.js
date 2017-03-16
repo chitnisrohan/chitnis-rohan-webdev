@@ -18,7 +18,7 @@
                 .findUserByCredentials(user.username, user.password)
                 .success(function (user) {
                     if(user) {
-                        $location.url("/user/"+user._id);
+                        $location.url("/user/"+user[0]._id);
                     } else {
                         vm.error = "User not found";
                     }
