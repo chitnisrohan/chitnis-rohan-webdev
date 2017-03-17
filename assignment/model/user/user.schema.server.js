@@ -11,13 +11,6 @@ module.exports = function() {
         phone: String,
         websites: [{type: mongoose.Schema.Types.ObjectId, ref:'WebsiteModel'}],
         dateCreated: {type: Date, default: Date.now}
-        // google: {
-        //     id: String,
-        //     token: String,
-        //     email: String
-        // },
-        // role: {type: String, default: "STUDENT", enum: ['ADMIN', 'STUDENT', 'FACULTY']},
-        // websites: [WebsiteSchema],
     }, {collection: "userDB"});
 
     return UserSchema;

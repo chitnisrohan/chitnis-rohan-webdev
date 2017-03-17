@@ -41,33 +41,41 @@ module.exports = function (app, model) {
             .then(
                 function (website) {
                     model
-                        .userModel
-                        .removeWebsiteFromUser(websiteId, website._user[0])
+                        .pageModel
+                        .deleteAllPagesForThisWebsite(website.pages)
                         .then(
-                            function (website) {
+                            function () {
+                                model
+                                    .userModel
+                                    .removeWebsiteFromUser(websiteId, website._user[0])
+                                    .then(
+                                        function (website) {
+                                            model
+                                                .websiteModel
+                                                .deleteWebsite(websiteId)
+                                                .then(
+                                                    function (website) {
+                                                        res.json(website);
+                                                    },
+                                                    function (err) {
+                                                        res.sendStatus(400).send(err);
+                                                    }
+                                                );
+                                        },
+                                        function (err) {
+                                            res.sendStatus(400).send(err);
+                                        }
+                                    );
                             },
                             function (err) {
                                 res.sendStatus(400).send(err);
                             }
                         );
-
-                    model
-                        .websiteModel
-                        .deleteWebsite(websiteId)
-                        .then(
-                            function (website) {
-                                res.json(website);
-                            },
-                            function (err) {
-                                res.sendStatus(400).send(err);
-                            }
-                        );
-
                 },
-                function (err) {
-                    res.sendStatus(400).send(err);
-                }
-            );
+                        function (err) {
+                            res.sendStatus(400).send(err);
+                        });
+
 
     }
 

@@ -13,22 +13,31 @@ module.exports = function (app, model) {
             .then(
                 function (page) {
                     model
-                        .websiteModel
-                        .deletePageFromWebsite(page._website[0], pageId)
+                        .widgetModel
+                        .deleteAllWidgetsForThisPage(page.widgets)
                         .then(
-                            function (website) {
-                            },
-                            function (err) {
-                                res.sendStatus(400).send(err);
-                            }
-                        );
-
-                    model
-                        .pageModel
-                        .deletePage(pageId)
-                        .then(
-                            function (page) {
-                                res.json(page)
+                            function () {
+                                model
+                                    .websiteModel
+                                    .deletePageFromWebsite(page._website[0], pageId)
+                                    .then(
+                                        function (website) {
+                                            model
+                                                .pageModel
+                                                .deletePage(pageId)
+                                                .then(
+                                                    function (page) {
+                                                        res.json(page)
+                                                    },
+                                                    function (err) {
+                                                        res.sendStatus(400).send(err);
+                                                    }
+                                                );
+                                        },
+                                        function (err) {
+                                            res.sendStatus(400).send(err);
+                                        }
+                                    );
                             },
                             function (err) {
                                 res.sendStatus(400).send(err);
@@ -113,5 +122,4 @@ module.exports = function (app, model) {
                 }
             );
     }
-
 };

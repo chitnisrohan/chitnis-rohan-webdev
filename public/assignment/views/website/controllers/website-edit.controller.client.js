@@ -20,7 +20,6 @@
             WebsiteService
                 .findWebsiteById(websiteId)
                 .success(function (website) {
-                    console.log(website);
                     vm.website = website;
                 });
             WebsiteService

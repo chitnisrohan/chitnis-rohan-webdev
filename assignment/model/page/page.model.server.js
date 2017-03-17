@@ -12,9 +12,80 @@ module.exports = function () {
         findAllPagesForWebsite : findAllPagesForWebsite,
         findPageById : findPageById,
         updatePage: updatePage,
-        deletePage : deletePage
+        deletePage : deletePage,
+        addWidgetToPage: addWidgetToPage,
+        deleteWidgetFromPage: deleteWidgetFromPage,
+        deleteAllPagesForThisWebsite: deleteAllPagesForThisWebsite
     };
     return api;
+
+    function deleteAllPagesForThisWebsite(pages) {
+        var deferred = Q.defer();
+        var pageList = [];
+        for(var i = 0; i < pages.length ; i++) {
+            pageList.push(pages[i]);
+        }
+
+        for(var p in pageList) {
+            var pageId = pageList[p];
+            PageModel
+                .findOne({_id: pageId}, function (err, page) {
+                   if (err) {
+                       deferred.abort(err);
+                   } else {
+                       model
+                           .widgetModel
+                           .deleteAllWidgetsForThisPage(page.widgets)
+                           .then(
+                               function () {
+                                   PageModel
+                                       .remove({_id: page._id}, function (err, page) {
+                                           if (err) {
+                                               deferred.abort(err);
+                                           } else {
+                                               deferred.resolve(page);
+                                           }
+                                       });
+                                   deferred.resolve(page);
+                               },
+                               function (err) {
+                                   deferred.abort(err);
+                               }
+                           );
+                   }
+                });
+        }
+        deferred.resolve(pages);
+        return deferred.promise;
+    }
+
+    function deleteWidgetFromPage(pageId, widgetId) {
+        var deferred = Q.defer();
+        PageModel
+            .update({_id: pageId}, {$pull : {widgets: widgetId}},
+                function (err, page) {
+                    if(err) {
+                        deferred.abort(err);
+                    } else {
+                        deferred.resolve(page);
+                    }
+            });
+        return deferred.promise;
+    }
+
+    function addWidgetToPage(pageId, widgetId) {
+        var deferred = Q.defer();
+        PageModel
+            .update({_id: pageId},{$push: {widgets : widgetId}},
+                function (err, page) {
+                    if(err) {
+                        deferred.abort();
+                    } else {
+                        deferred.resolve(page);
+                    }
+            });
+        return deferred.promise;
+    }
 
     function deletePage(pageId) {
         var deferred = Q.defer();
