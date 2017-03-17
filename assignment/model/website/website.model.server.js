@@ -12,13 +12,34 @@ module.exports = function () {
         findWebsiteById: findWebsiteById,
         deleteWebsite: deleteWebsite,
         updateWebsite: updateWebsite,
-        addPageToWebsite: addPageToWebsite
+        addPageToWebsite: addPageToWebsite,
+        deletePageFromWebsite : deletePageFromWebsite
     };
     return api;
 
+    function deletePageFromWebsite(websiteId, pageId) {
+        var deferred = Q.defer();
+        WebsiteModel
+            .findOne({_id: websiteId}, function (err, website) {
+                if(err) {
+                    deferred.abort(err);
+                } else {
+                    WebsiteModel
+                        .update({_id: website._id}, {$pull : {pages: pageId}},
+                            function (err, website) {
+                                if(err) {
+                                    deferred.abort(err);
+                                } else {
+                                    deferred.resolve(website);
+                                }
+                        });
+                }
+            });
+        return deferred.promise;
+    }
+
     function addPageToWebsite(websiteId, pageId) {
         var deferred = Q.defer();
-        console.log(websiteId);
         WebsiteModel
             .update({_id : websiteId}, {$push : {pages : pageId}}, function (err, updatedWebsite) {
                 if (err) {
