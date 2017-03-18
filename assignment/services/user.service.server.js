@@ -154,7 +154,11 @@ module.exports = function (app, model) {
             .findUserByUsername(username)
             .then(
                 function (user) {
-                    res.send(user);
+                    if (user) {
+                        res.send(user);
+                    } else {
+                        res.sendStatus(400);
+                    }
                 },
                 function (err) {
                     res.sendStatus(400).send(err);

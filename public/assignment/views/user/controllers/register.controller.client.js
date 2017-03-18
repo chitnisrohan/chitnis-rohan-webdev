@@ -17,14 +17,18 @@
 
         function registerUser(newUser) {
             if (newUser.password === newUser.verify.password) {
-                var user = UserService
-                    .createUser(newUser)
+                UserService
+                    .findUserByUsername(newUser.username)
                     .success(function (user) {
-                        if (user === 'Username already taken. Please choose another Username') {
-                            vm.error = user;
-                        } else {
-                            $location.url("/user/" + user._id);
-                        }
+                        console.log(user);
+                        vm.error = 'Username already exists'
+                    }) 
+                    .error(function () {
+                        UserService
+                            .createUser(newUser)
+                            .success(function (user) {
+                                $location.url("/user/" + user._id);
+                            });
                     });
             } else {
                     vm.error = "passwords do not match";
