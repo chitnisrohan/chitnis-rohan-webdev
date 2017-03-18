@@ -1,17 +1,12 @@
 module.exports = function (app, model) {
 
+    //var websiteService = require('./services/website.service.server.js')(app, model);
+
     app.get("/api/user", findUser);
     app.get("/api/user/:userId", findUserById);
     app.put("/api/user/:userId", updateUser);
     app.delete("/api/user/:userId", deleteUser);
     app.post("/api/user", createUser);
-
-    var users = [
-        {_id: "123", username: "alice",    password: "alice", email:"alice@abc.com",    firstName: "Alice",  lastName: "Wonder"  },
-        {_id: "234", username: "bob",      password: "bob", email:"bob@abc.com",     firstName: "Bob",    lastName: "Marley"  },
-        {_id: "345", username: "charly",   password: "charly", email:"charly@abc.com",  firstName: "Charly", lastName: "Garcia"  },
-        {_id: "456", username: "jannunzi", password: "jannunzi", email:"jannunzi@abc.com", firstName: "Jose",   lastName: "Annunzi" }
-    ];
 
     function createUser(req, res) {
         var newUser = req.body;
@@ -30,17 +25,87 @@ module.exports = function (app, model) {
 
     function deleteUser(req, res) {
         var userId = req.params.userId;
+
         model
             .userModel
-            .deleteUser(userId)
+            .findUserById(userId)
             .then(
-                function (newUser) {
-                    res.send(newUser);
+                function (user) {
+                    var websites = [];
+                    for (var i = 0 ; i < user.websites.length ; i++) {
+                        websites.push(user.websites[i]);
+                    }
+                    for(var w in websites) {
+                        model
+                            .websiteModel
+                            .findWebsiteById(websites[w])
+                            .then(
+                                function (website) {
+                                    model
+                                        .pageModel
+                                        .deleteAllPagesForThisWebsite(website.pages)
+                                        .then(
+                                            function () {
+                                                model
+                                                    .userModel
+                                                    .removeWebsiteFromUser(website._id, website._user[0])
+                                                    .then(
+                                                        function () {
+                                                            console.log(website._id);
+                                                            model
+                                                                .websiteModel
+                                                                .deleteWebsite(website._id)
+                                                                .then(
+                                                                    function (website) {
+                                                                        // res.json(website);
+                                                                    },
+                                                                    function (err) {
+                                                                        res.sendStatus(400).send(err);
+                                                                    }
+                                                                );
+                                                        },
+                                                        function (err) {
+                                                            res.sendStatus(400).send(err);
+                                                        }
+                                                    );
+                                            },
+                                            function (err) {
+                                                res.sendStatus(400).send(err);
+                                            }
+                                        );
+                                },
+                                function (err) {
+                                    res.sendStatus(400).send(err);
+                                });
+                    }
+                    model
+                        .userModel
+                        .deleteUser(userId)
+                        .then(
+                            function (newUser) {
+                                res.send(newUser);
+                            },
+                            function (err) {
+                                res.sendStatus(400).send(err);
+                            }
+                        );
                 },
                 function (err) {
                     res.sendStatus(400).send(err);
                 }
             );
+
+        // model
+        //     .userModel
+        //     .deleteUser(userId)
+        //     .then(
+        //         function (newUser) {
+        //             res.send(newUser);
+        //         },
+        //         function (err) {
+        //             res.sendStatus(400).send(err);
+        //         }
+        //     );
     }
 
     function updateUser(req, res) {

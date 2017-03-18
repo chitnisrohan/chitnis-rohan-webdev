@@ -13,9 +13,70 @@ module.exports = function () {
         findAllWidgetsForPage: findAllWidgetsForPage,
         updateWidget: updateWidget,
         deleteWidget: deleteWidget,
-        deleteAllWidgetsForThisPage: deleteAllWidgetsForThisPage
+        deleteAllWidgetsForThisPage: deleteAllWidgetsForThisPage,
+        reorderWidget: reorderWidget
     };
     return api;
+    
+    function reorderWidget(pageId, initial, final) {
+        var deferred = Q.defer();
+        findAllWidgetsForPage(pageId)
+            .then(
+                function (widgets) {
+                    WidgetModel
+                        .findOne({"order": initial}, function (err, widget) {
+                            if(widget && initial > final) {
+                                for (var o = initial-1; o >= final; o--) {
+                                    WidgetModel
+                                        .update({"order":o},{$set : {"order": o+1}},
+                                            function (err, widget) {
+                                                if(err) {
+                                                    deferred.abort(err);
+                                                } else {
+                                                   deferred.resolve(widgets);
+                                                }
+                                            });
+                                }
+                                WidgetModel
+                                    .update({_id: widget._id},{$set :{"order": final}},
+                                        function (err, status) {
+                                            if(err) {
+                                                deferred.abort(err);
+                                            } else {
+                                                deferred.resolve(widget);
+                                            }
+                                        });
+                            } else if (widget && initial < final) {
+                                for (var o = initial; o <= final; o++) {
+                                    WidgetModel
+                                        .update({"order":o},{$set : {"order": o-1}},
+                                            function (err, widget) {
+                                                if(err) {
+                                                    deferred.abort(err);
+                                                } else {
+                                                    deferred.resolve(widgets);
+                                                }
+                                            });
+                                }
+                                WidgetModel
+                                    .update({_id: widget._id},{$set :{"order": final}},
+                                        function (err, status) {
+                                            if(err) {
+                                                deferred.abort(err);
+                                            } else {
+                                                deferred.resolve(widget);
+                                            }
+                                        });
+                            } else {
+                                deferred.reject(err);
+                            }
+                        });
+                }, function (err) {
+                    deferred.abort(err);
+                }
+            );
+        return deferred.promise;
+    }
 
     function deleteAllWidgetsForThisPage(widgets) {
         var deferred = Q.defer();
@@ -39,12 +100,39 @@ module.exports = function () {
 
     function deleteWidget(widgetId) {
         var deferred = Q.defer();
+        console.log(widgetId);
         WidgetModel
-            .remove({_id: widgetId}, function (err, widget) {
+            .findOne({_id : widgetId}, function (err, widget) {
                 if (err) {
                     deferred.abort(err);
                 } else {
-                    deferred.resolve(widget);
+                    console.log(widget._page);
+                    WidgetModel
+                        .find({"_page":widget._page}, function (err, widgets) {
+                            if (err) {
+                                deferred.abort(err);
+                            } else {
+                                console.log(widgets);
+                                for(var o = widget.order ; o <= widgets.length - 1 ; o++) {
+                                    WidgetModel
+                                        .update({"order": o+1},{$set : {"order":o}},
+                                            function (err, widget) {
+                                                if(err) {
+                                                    deferred.abort(err);
+                                                } else {
+                                                    WidgetModel
+                                                        .remove({_id: widgetId}, function (err, widget) {
+                                                            if (err) {
+                                                                deferred.abort(err);
+                                                            } else {
+                                                                deferred.resolve(widget);
+                                                            }
+                                                        });
+                                                }
+                                            });
+                                }
+                            }
+                        });
                 }
             });
         return deferred.promise;
@@ -87,7 +175,7 @@ module.exports = function () {
                } else {
                    deferred.resolve(widgets);
                }
-            });
+            }).sort({"order":1});
         return deferred.promise;
     }
 
@@ -110,24 +198,30 @@ module.exports = function () {
 
     function createWidget(pageId, widget){
         var deferred = Q.defer();
-        WidgetModel
-            .create(widget, function (err, widget) {
-                if (err) {
-                    deferred.abort(err);
-                } else {
-                    WidgetModel
-                        .update({_id: widget._id}, {_page: pageId}, function (err, widget) {
-                            if (err) {
-                                deferred.abort(err);
-                            } else {
+        findAllWidgetsForPage(pageId)
+            .then(
+                function (widgets) {
+                    widget.order = widgets.length;
+                            WidgetModel
+                                .create(widget, function (err, widget) {
+                                    if (err) {
+                                        deferred.abort(err);
+                                    } else {
+                                        WidgetModel
+                                            .update({_id: widget._id}, {_page: pageId}, function (err, widget) {
+                                                if (err) {
+                                                    deferred.abort(err);
+                                                } else {
 
-                            }
-                        });
-                    deferred.resolve(widget);
+                                                }
+                                            });
+                                        deferred.resolve(widget);
+                                    }
+                                });
+                }, function (err) {
+                    deferred.abort(err);
                 }
-            });
+            );
         return deferred.promise;
     }
-
-
 };

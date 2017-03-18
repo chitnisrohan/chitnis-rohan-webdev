@@ -75,8 +75,6 @@ module.exports = function (app, model) {
                         function (err) {
                             res.sendStatus(400).send(err);
                         });
-
-
     }
 
     function findWebsiteById(req, res) {
@@ -124,6 +122,4 @@ module.exports = function (app, model) {
                 }
             );
     }
-
-
 };

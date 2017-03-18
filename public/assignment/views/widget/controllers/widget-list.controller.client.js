@@ -15,6 +15,7 @@
         vm.goToEditWidget = goToEditWidget;
         vm.goToProfile = goToProfile;
         vm.getTrustedHtml = getTrustedHtml;
+        vm.rearrangeList = rearrangeList;
 
         function init() {
             vm.widgetTypeList = [];
@@ -31,6 +32,14 @@
             }
         }
         init();
+
+        function rearrangeList(updatedIndex){
+            var promise=WidgetService.rearrangeList(pageId, updatedIndex);
+            promise.error(function (){
+                    vm.error="Unable to update WidgetList";
+                }
+            );
+        }
 
         function getTrustedHtml(text) {
             return $sce.trustAsHtml(text);

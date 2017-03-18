@@ -21,7 +21,8 @@ module.exports = function() {
         icon: String,
         deletable: Boolean,
         formatted: Boolean,
-        dateCreated: {type: Date, default: Date.now}
+        dateCreated: {type: Date, default: Date.now},
+        order : Number
     }, {collection: "widgetDB"});
 
     return WidgetSchema;

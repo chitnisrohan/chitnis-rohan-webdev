@@ -5,16 +5,7 @@ module.exports = function (app, model) {
     app.post("/api/page/:pageId/widget", createWidget);
     app.put("/api/widget/:widgetId", updateWidget);
     app.delete("/api/widget/:widgetId", deleteWidget);
-
-    var widgets =[
-        { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": "2", "text": "Welcome to FIFA 16"},
-        { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": "4", "text": "Lorem ipsum"},
-        { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-            "url": "http://lorempixel.com/400/200/sports/"},
-        { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": "4", "text": "Lorem ipsum"},
-        { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
-            "url": "https://www.youtube.com/embed/AfeDwkIaHNY" }
-    ];
+    app.put("/api/page/:pageId/widget", updateIndex);
 
 
     ///////////////
@@ -50,7 +41,6 @@ module.exports = function (app, model) {
                 width: width,
                 url: req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename
             };
-
 
             model
                 .widgetModel
@@ -95,19 +85,33 @@ module.exports = function (app, model) {
                 );
         }
 
-        for (var i in widgets) {
-
-            if (widgets[i]._id == widgetId) {
-                widgets[i].width = width;
-                widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
-
-            }
-        }
+        // for (var i in widgets) {
+        //
+        //     if (widgets[i]._id == widgetId) {
+        //         widgets[i].width = width;
+        //         widgets[i].url = req.protocol + '://' + req.get('host') + "/uploads/" + myFile.filename;
+        //
+        //     }
+        // }
 
         res.redirect("/assignment/#/user/" + userId + "/website/" + websiteId + "/page/" + pageId + "/widget/");
     }
 
     ///////////////
+
+    function updateIndex(req, res){
+        var pageId=req.params.pageId;
+        var initial=req.query.initial;
+        var final=req.query.final;
+        model
+            .widgetModel
+            .reorderWidget(pageId, initial, final)
+            .then(function () {
+                res.sendStatus(200);
+            }, function () {
+                res.sendStatus(404);
+            })
+    }
 
     function deleteWidget(req, res) {
         var widgetId = req.params.widgetId;
@@ -139,15 +143,6 @@ module.exports = function (app, model) {
                         );
                 }
             );
-
-
-        for(var w in widgets) {
-            var widgetToBedeleted = widgets[w];
-            if (widgetToBedeleted._id === widgetId) {
-                widgets.splice(w,1);
-                res.json(widgetToBedeleted);
-            }
-        }
     }
 
     function updateWidget(req, res) {
@@ -221,6 +216,4 @@ module.exports = function (app, model) {
                 }
             );
     }
-
-
 };
