@@ -100,19 +100,17 @@ module.exports = function () {
 
     function deleteWidget(widgetId) {
         var deferred = Q.defer();
-        console.log(widgetId);
+
         WidgetModel
             .findOne({_id : widgetId}, function (err, widget) {
                 if (err) {
                     deferred.abort(err);
                 } else {
-                    console.log(widget._page);
                     WidgetModel
                         .find({"_page":widget._page}, function (err, widgets) {
                             if (err) {
                                 deferred.abort(err);
                             } else {
-                                console.log(widgets);
                                 for(var o = widget.order ; o <= widgets.length - 1 ; o++) {
                                     WidgetModel
                                         .update({"order": o+1},{$set : {"order":o}},

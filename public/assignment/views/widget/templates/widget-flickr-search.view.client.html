@@ -1,0 +1,54 @@
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="row container-fluid">
+        <div class="col-lg-1 visible-lg"></div>
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-10">
+            <div class="navbar-brand pull-left wbdv-no-left-margin">
+                <a ng-click="model.goToImageNewPage()">
+                    <span class="glyphicon glyphicon-chevron-left wbdv-custom-color">
+                    </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand navbar-link">
+                    <strong class="wbdv-custom-color">Search Flickr</strong>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-1 visible-lg"></div>
+    </div>
+</nav>
+
+<div class="container-fluid wbdv-margin-if-fixed-header">
+    <div class="input-group">
+        <input ng-model="searchText" type="text" class="form-control">
+        <span class="input-group-btn">
+        <a ng-click="model.searchPhotos(searchText)" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+    </div>
+
+    <div class="row wbdv-margin-if-fixed-header wbdv-margin-if-fixed-footer">
+        <div class="col-xs-3" ng-repeat="photo in model.photos.photo">
+            <img ng-click="model.selectPhoto(photo)"
+                 ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-fixed-bottom bg-primary">
+    <div class="row container-fluid">
+        <div class="col-lg-1 visible-lg"></div>
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-10">
+            <div class="navbar-footer">
+                <a ng-click="model.goToProfile()"
+                   class="navbar-brand navbar-link pull-right">
+                    <span class="glyphicon glyphicon-user wbdv-custom-color">
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-1 visible-lg"></div>
+    </div>
+</nav>

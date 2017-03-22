@@ -1,0 +1,22 @@
+<div class="row container-fluid wbdv-margin-if-fixed-footer wbdv-margin-if-fixed-header">
+    <div class="col-lg-1 visible-lg"></div>
+    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-10">
+        <h2 class="text-alignment">Text Widget</h2>
+            <!--<div ng-switch-when="TEXT">-->
+                Text
+                <input ng-model="model.widget.text" class="form-control"/>
+                Rows
+                <input ng-model="model.widget.rows" class="form-control" type="number"/>
+                Placeholder
+                <input ng-model="model.widget.placeholder" class="form-control"/>
+                Formatted
+                <input ng-model="model.widget.formatted" type="checkbox"/>
+            <!--</div>-->
+        <a ng-show="model.mode !='new'"
+           class="btn btn-danger form-control"
+           ng-click="model.deleteWidget(model.widget)">
+            Delete
+        </a>
+    </div>
+    <div class="col-lg-1 visible-lg"></div>
+</div>

@@ -17,6 +17,7 @@
         vm.goToProfile = goToProfile;
         vm.deleteWidget = deleteWidget;
         vm.goToWidgetList = goToWidgetList;
+        vm.goToFlikrSearchPage = goToFlikrSearchPage;
 
         function init() {
             getWidgetById();
@@ -25,6 +26,10 @@
             vm.userId = userId;
         }
         init();
+
+        function goToFlikrSearchPage() {
+            $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget/edit/flickerImage/" + widgetId);
+        }
 
         function goToWidgetList() {
             $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget");
@@ -48,11 +53,15 @@
         }
 
         function editWidget(widgetToBeEdited) {
+            console.log(widgetToBeEdited);
             var newWidget;
             if(vm.widget.widgetType === "HEADER") {
                 newWidget = {"text": widgetToBeEdited.text, "size": widgetToBeEdited.size};
             } else if (vm.widget.widgetType === "HTML") {
                 newWidget = {"text": widgetToBeEdited.text};
+            } else if (vm.widget.widgetType === "TEXT") {
+                newWidget = {"text": widgetToBeEdited.text, "rows": widgetToBeEdited.rows,
+                "placeholder" : widgetToBeEdited.placeholder, "formatted": widgetToBeEdited.formatted};
             } else {
                 newWidget = {"width": widgetToBeEdited.width, "url": widgetToBeEdited.url};
             }

@@ -47,6 +47,10 @@
                             <div ng-include="'views/widget/templates/widget-html.view.client.html'">
                             </div>
                         </div>
+                        <div ng-switch-when="TEXT">
+                            <div ng-include ="'views/widget/templates/widget-text.view.client.html'">
+                            </div>
+                        </div>
                         <div ng-switch-when="IMAGE">
                             <div ng-include ="'views/widget/templates/widget-image.view.client.html'">
                             </div>

@@ -48,11 +48,11 @@
                 <label for="myFile">Upload</label>
                 <input  id="myFile" name="myFile"    type="file" class="form-control" required/>
                 <!--<input  name="width"     value="{{model.widget.width}}" style="display: none"/>-->
-                <input  name="userId"    value="{{model.userId}}"   style="display: none"/>
-                <input  name="websiteId" value="{{model.websiteId}}"   style="display: none"/>
-                <input  name="pageId"    value="{{model.pageId}}"   style="display: none"/>
-                <input  name="widgetId"  value="{{model.widget._id}}"   style="display: none"/>
-                <button id="uploadImage" type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+                <input class="wbdv-do-not-display" name="userId"    value="{{model.userId}}"/>
+                <input class="wbdv-do-not-display" name="websiteId" value="{{model.websiteId}}"/>
+                <input class="wbdv-do-not-display" name="pageId"    value="{{model.pageId}}"/>
+                <input class="wbdv-do-not-display" name="widgetId"  value="{{model.widget._id}}"/>
+                <button id="uploadImage" type="submit"   class="wbdv-margin-if-fixed-header btn btn-block btn-primary">Upload Image</button>
             </div>
             <!--<div class="form-group">-->
                 <!--<input ng-show="model.mode !='new'"-->
@@ -62,12 +62,19 @@
                        <!--value="Upload Image">-->
             <!--</div>-->
             <div class="form-group">
+                <a class="btn btn-primary form-control"
+                   ng-click="model.goToFlikrSearchPage()">
+                    Flicker Search
+                </a>
+            </div>
+            <div class="form-group">
                 <a ng-show="model.mode !='new'"
                    class="btn btn-danger form-control"
                    ng-click="model.deleteWidget(model.widget)">
                     Delete
                 </a>
             </div>
+
         </form>
     </div>
     <div class="col-lg-1 visible-lg"></div>

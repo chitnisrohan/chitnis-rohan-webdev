@@ -13,6 +13,7 @@
         vm.addWidget = addWidget;
         vm.goToWidgetList = goToWidgetList;
         vm.goToProfile = goToProfile;
+        vm.goToFlikrSearchPage = goToFlikrSearchPage;
 
         function init() {
             vm.mode = "new";
@@ -21,6 +22,10 @@
             vm.pageId = pageId;
         }
         init();
+
+        function goToFlikrSearchPage() {
+            $location.url("/user/"+ userId +"/website/"+ websiteId +"/page/" + pageId + "/widget/new/flickerImage");
+        }
 
         function goToProfile() {
             $location.url("/user/"+ userId);
@@ -36,6 +41,10 @@
                 newWidget = {"text": widget.text, "size": widget.size, "widgetType" : vm.widgetType};
             } else if (vm.widgetType === 'HTML') {
                 newWidget = {"text": widget.text, "widgetType" : vm.widgetType};
+            } else if (vm.widgetType === 'TEXT') {
+                newWidget = {"text": widget.text, "rows" : widget.rows,
+                    "placeholder" : widget.placeholder, "formatted" : widget.formatted,
+                "widgetType": vm.widgetType};
             } else {
                 newWidget = {"url": widget.url, "width": widget.width, "widgetType" : vm.widgetType};
             }

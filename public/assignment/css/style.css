@@ -2,6 +2,23 @@ input.form-control {
     margin-bottom: 5px;
 }
 
+.wbdv-do-not-display {
+    display: none;
+}
+
+.wbdv-youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.wbdv-youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 body {
     padding-top: 36px;
 }
