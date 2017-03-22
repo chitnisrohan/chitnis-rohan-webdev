@@ -47,7 +47,7 @@ module.exports = function () {
                                             }
                                         });
                             } else if (widget && initial < final) {
-                                for (var o = initial; o <= final; o++) {
+                                for (var o = initial+1; o <= final; o++) {
                                     WidgetModel
                                         .update({"order":o},{$set : {"order": o-1}},
                                             function (err, widget) {
