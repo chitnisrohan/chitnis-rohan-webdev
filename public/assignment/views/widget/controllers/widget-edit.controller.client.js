@@ -53,7 +53,6 @@
         }
 
         function editWidget(widgetToBeEdited) {
-            console.log(widgetToBeEdited);
             var newWidget;
             if(vm.widget.widgetType === "HEADER") {
                 newWidget = {"text": widgetToBeEdited.text, "size": widgetToBeEdited.size};
