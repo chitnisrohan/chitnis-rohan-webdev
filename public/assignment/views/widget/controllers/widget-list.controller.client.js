@@ -20,7 +20,6 @@
         function init() {
             vm.widgetTypeList = [];
             vm.widgetTextList = [];
-            console.log(pageId);
             WidgetService
                 .findWidgetsByPageId(pageId)
                 .success(function (widgets) {

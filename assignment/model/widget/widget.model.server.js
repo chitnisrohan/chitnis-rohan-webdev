@@ -24,11 +24,11 @@ module.exports = function () {
             .then(
                 function (widgets) {
                     WidgetModel
-                        .findOne({"order": initial}, function (err, widget) {
+                        .findOne({"order": initial,_page : pageId}, function (err, widget) {
                             if(widget && initial > final) {
                                 for (var o = initial-1; o >= final; o--) {
                                     WidgetModel
-                                        .update({"order":o},{$set : {"order": o+1}},
+                                        .update({"order":o,_page : pageId},{$set : {"order": o+1}},
                                             function (err, widget) {
                                                 if(err) {
                                                     deferred.abort(err);
@@ -38,7 +38,7 @@ module.exports = function () {
                                             });
                                 }
                                 WidgetModel
-                                    .update({_id: widget._id},{$set :{"order": final}},
+                                    .update({_id: widget._id,_page : pageId},{$set :{"order": final}},
                                         function (err, status) {
                                             if(err) {
                                                 deferred.abort(err);
@@ -49,7 +49,7 @@ module.exports = function () {
                             } else if (widget && initial < final) {
                                 for (var o = initial+1; o <= final; o++) {
                                     WidgetModel
-                                        .update({"order":o},{$set : {"order": o-1}},
+                                        .update({"order":o,_page : pageId},{$set : {"order": o-1}},
                                             function (err, widget) {
                                                 if(err) {
                                                     deferred.abort(err);
@@ -59,7 +59,7 @@ module.exports = function () {
                                             });
                                 }
                                 WidgetModel
-                                    .update({_id: widget._id},{$set :{"order": final}},
+                                    .update({_id: widget._id,_page : pageId},{$set :{"order": final}},
                                         function (err, status) {
                                             if(err) {
                                                 deferred.abort(err);
